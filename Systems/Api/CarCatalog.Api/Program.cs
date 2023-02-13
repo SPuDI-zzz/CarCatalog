@@ -19,7 +19,7 @@ services.AddAppVersioning();
 
 services.AddAppSwagger();
 
-builder.Services.AddControllers();
+services.AddAppControllerAndViews();
 
 var app = builder.Build();
 
@@ -29,8 +29,6 @@ app.UseAppSwagger();
 
 // Configure the HTTP request pipeline.
 
-app.UseAuthorization();
-
-app.MapControllers();
+app.UseAppControllerAndViews();
 
 app.Run();
