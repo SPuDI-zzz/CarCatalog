@@ -15,6 +15,8 @@ services.AddAppCors();
 
 services.AddAppHealthChecks();
 
+services.AddAppVersioning();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
