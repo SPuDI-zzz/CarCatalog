@@ -1,6 +1,10 @@
+using CarCatalog.Api.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.AddAppLogger();
 
 builder.Services.AddControllers();
 
