@@ -17,11 +17,15 @@ services.AddAppHealthChecks();
 
 services.AddAppVersioning();
 
+services.AddAppSwagger();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
 
 app.UseAppHealthChecks();
+
+app.UseAppSwagger();
 
 // Configure the HTTP request pipeline.
 
