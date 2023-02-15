@@ -23,6 +23,8 @@ services.AddAppControllerAndViews();
 
 var app = builder.Build();
 
+app.UseStaticFiles();
+
 app.UseAppHealthChecks();
 
 app.UseAppSwagger();
