@@ -17,11 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Api", "Systems\A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Common", "Shared\CarCatalog.Common\CarCatalog.Common.csproj", "{64BC77CE-4D5C-429A-8E84-922BEAB5BEDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Settings", "Shared\CarCatalog.Settings\CarCatalog.Settings.csproj", "{DB8D6D2F-2AB5-4E72-BB65-04BC594375F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Settings", "Shared\CarCatalog.Settings\CarCatalog.Settings.csproj", "{DB8D6D2F-2AB5-4E72-BB65-04BC594375F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Services.Settings", "Services\CarCatalog.Services.Settings\CarCatalog.Services.Settings.csproj", "{55836920-A425-403A-BA2A-DF7980AE811F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Services.Settings", "Services\CarCatalog.Services.Settings\CarCatalog.Services.Settings.csproj", "{55836920-A425-403A-BA2A-DF7980AE811F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Api.Settings", "Systems\Api\CarCatalog.Api.Settings\CarCatalog.Api.Settings.csproj", "{DAAF88AA-9C5A-4F90-BF8E-B63E17A04C43}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Api.Settings", "Systems\Api\CarCatalog.Api.Settings\CarCatalog.Api.Settings.csproj", "{F7D44F26-18F1-45F5-99D1-59BA570EFC46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,10 +45,10 @@ Global
 		{55836920-A425-403A-BA2A-DF7980AE811F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55836920-A425-403A-BA2A-DF7980AE811F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55836920-A425-403A-BA2A-DF7980AE811F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DAAF88AA-9C5A-4F90-BF8E-B63E17A04C43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DAAF88AA-9C5A-4F90-BF8E-B63E17A04C43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DAAF88AA-9C5A-4F90-BF8E-B63E17A04C43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DAAF88AA-9C5A-4F90-BF8E-B63E17A04C43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7D44F26-18F1-45F5-99D1-59BA570EFC46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7D44F26-18F1-45F5-99D1-59BA570EFC46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7D44F26-18F1-45F5-99D1-59BA570EFC46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7D44F26-18F1-45F5-99D1-59BA570EFC46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,7 +59,7 @@ Global
 		{64BC77CE-4D5C-429A-8E84-922BEAB5BEDC} = {F57E4F9D-89AE-43A9-ABD6-392E89261E2E}
 		{DB8D6D2F-2AB5-4E72-BB65-04BC594375F1} = {F57E4F9D-89AE-43A9-ABD6-392E89261E2E}
 		{55836920-A425-403A-BA2A-DF7980AE811F} = {465E7BA6-7E1B-4D35-B78B-427E279B323D}
-		{DAAF88AA-9C5A-4F90-BF8E-B63E17A04C43} = {D54F6398-0CD5-4F58-959F-FEF37D867ED3}
+		{F7D44F26-18F1-45F5-99D1-59BA570EFC46} = {D54F6398-0CD5-4F58-959F-FEF37D867ED3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48E3F2FE-4236-4A16-A49B-35EF14A0F690}

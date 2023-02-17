@@ -1,5 +1,6 @@
 ﻿namespace CarCatalog.Api;
 
+using CarCatalog.Api.Settings;
 using CarCatalog.Services.Settings;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +11,7 @@ public static class Bootstrapper
         services
             .AddMainSettings()
             .AddSwaggerSettings()
+            .AddApiSpecialSettings()
             ;
 
         return services;
