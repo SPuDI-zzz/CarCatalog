@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  carcatalog.postgresql:
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Passw0rd
+    ports:
+      - "5432:5432"
+    networks:
+      - shared_carcatalog_net
+    volumes:      
+      - ~/.docker-conf/postgresql/data/:/var/lib/postgresql/data
+
+  carcatalog.redis:
+    ports:
+      - '6379:6379'
+    networks:
+      - shared_carcatalog_net
+    volumes:      
+      - ~/.docker-conf/redis/data/:/data
+
+  carcatalog.api:
+    ports:
+      - "10000:80"
+    networks:
+      - shared_carcatalog_net
+    env_file:
+      - env.api
+
+networks:
+  shared_carcatalog_net:
+    name: car_catalog_net
+    driver: bridge

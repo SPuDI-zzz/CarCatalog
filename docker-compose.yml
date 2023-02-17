@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+
+  carcatalog.postgresql:
+    image: postgres:14.1
+    
+  carcatalog.redis:
+    image: redis
+
+  carcatalog.api:
+    image: ${DOCKER_REGISTRY-}carcatalogapi
+    build:
+      context: .
+      dockerfile: Systems/Api/CarCatalog.Api/Dockerfile
+    depends_on:
+      - carcatalog.postgresql
+      - carcatalog.redis
+      
