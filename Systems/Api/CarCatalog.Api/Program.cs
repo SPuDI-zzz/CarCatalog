@@ -1,8 +1,14 @@
+using CarCatalog.Api;
 using CarCatalog.Api.Configuration;
+using CarCatalog.Services.Settings;
+using CarCatalog.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+var mainSettings = Settings.Load<MainSettings>("Main");
+var swaggerSettings = Settings.Load<SwaggerSettings>("Swagger");
 
 builder.AddAppLogger();
 
@@ -17,9 +23,11 @@ services.AddAppHealthChecks();
 
 services.AddAppVersioning();
 
-services.AddAppSwagger();
+services.AddAppSwagger(mainSettings, swaggerSettings);
 
 services.AddAppControllerAndViews();
+
+services.RegisterAppServices();
 
 var app = builder.Build();
 

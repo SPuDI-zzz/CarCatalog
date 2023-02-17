@@ -1,7 +1,7 @@
 ﻿namespace CarCatalog.Api.Configuration;
 
 using CarCatalog.Common.Security;
-//using CarCatalog.Services.Settings;
+using CarCatalog.Services.Settings;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
@@ -16,16 +16,17 @@ public static class SwaggerConfiguration
 {
     private static string AppTitle = "CarCatalog Api";
 
+    // TODO : add IdentitySettings
     /// <summary>
     /// Add OpenAPI for API
     /// </summary>
     /// <param name="services">Services collection</param>
     /// <param name="mainSettings"></param>
     /// <param name="swaggerSettings"></param>
-    public static IServiceCollection AddAppSwagger(this IServiceCollection services)//, IdentitySettings identitySettings, SwaggerSettings swaggerSettings)
+    public static IServiceCollection AddAppSwagger(this IServiceCollection services, MainSettings mainSettings/*, IdentitySettings identitySettings*/, SwaggerSettings swaggerSettings)
     {
-        /*if (!swaggerSettings.Enabled)
-            return services;*/
+        if (!swaggerSettings.Enabled)
+            return services;
 
         services
             .AddOptions<SwaggerGenOptions>()
@@ -64,15 +65,18 @@ public static class SwaggerConfiguration
                 In = ParameterLocation.Header,
                 Flows = new OpenApiOAuthFlows
                 {
-                    /*Password = new OpenApiOAuthFlow
+                    Password = new OpenApiOAuthFlow
                     {
-                        TokenUrl = new Uri($"{identitySettings.Url}/connect/token"),
+                        // TODO : add IdentitySettings and use it
+                        TokenUrl = new Uri($"{/*identitySettings.Url*/mainSettings.MainUrl}/connect/token"),
                         Scopes = new Dictionary<string, string>
                         {
-                            {AppScopes.BooksRead, "BooksRead"},
-                            {AppScopes.BooksWrite, "BooksWrite"}
+                            {"api", "Full API access"},
+                            // TODO : for IdentittyServer
+                            /*{AppScopes.BooksRead, "BooksRead"},
+                            {AppScopes.BooksWrite, "BooksWrite"}*/
                         }
-                    }*/
+                    }
                 }
             });
 
@@ -111,10 +115,10 @@ public static class SwaggerConfiguration
     /// <param name="app">Web application</param>
     public static void UseAppSwagger(this WebApplication app)
     {
-        /*var swaggerSettings = app.Services.GetService<SwaggerSettings>();
+        var swaggerSettings = app.Services.GetService<SwaggerSettings>();
 
         if (!swaggerSettings?.Enabled ?? false)
-            return;*/
+            return;
 
         var provider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
