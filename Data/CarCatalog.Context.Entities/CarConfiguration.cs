@@ -2,15 +2,13 @@
 
 public class CarConfiguration : BaseEntity
 {
-    public string NameSeria { get; set; }
-
     public int Trunk { get; set; }
 
     public int HorsePower { get; set; }
 
     public float EngineCapasity { get; set; }
 
-    public string WheelType { get; set; }
+    public bool LeftHandWheel { get; set; }
 
     public int? IdCarDriveType { get; set; }
     public CarDriveType CarDriveType { get; set; }
