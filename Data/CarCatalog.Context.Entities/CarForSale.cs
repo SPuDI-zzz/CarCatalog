@@ -1,6 +1,7 @@
-﻿using System.Data.SqlTypes;
+﻿namespace CarCatalog.Context.Entities;
 
-namespace CarCatalog.Context.Entities;
+using System.Data.SqlTypes;
+
 public class CarForSale : BaseEntity
 {
     public int Color { get; set; }

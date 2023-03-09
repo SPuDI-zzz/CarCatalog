@@ -1,4 +1,5 @@
 ﻿namespace CarCatalog.Context.Entities;
+
 public class CarModel : BaseEntity
 {
     public string Name { get; set; }

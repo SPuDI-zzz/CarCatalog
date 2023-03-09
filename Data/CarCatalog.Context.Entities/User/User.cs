@@ -1,13 +1,9 @@
 ﻿namespace CarCatalog.Context.Entities;
 
-public class User : BaseEntity
+using Microsoft.AspNetCore.Identity;
+
+public class User : IdentityUser<Guid>
 {
-    public string Name { get; set; }
-
-    public string Surname { get; set; }
-
-    public string Patronymic { get; set; }
-
     public DateOnly Birthday { get; set; }
 
     public ICollection<Comment> Comments { get; set; }

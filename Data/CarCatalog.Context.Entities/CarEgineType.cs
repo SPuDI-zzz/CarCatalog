@@ -1,6 +1,12 @@
 ﻿namespace CarCatalog.Context.Entities;
-public class CarEgineType : BaseEntity 
+
+using System.ComponentModel.DataAnnotations;
+
+public class CarEgineType
 {
+    [Key]
+    public int Id { get; set; }
+
     public string Name { get; set; }
 
     public int? IdCarConfiguration { get; set; }

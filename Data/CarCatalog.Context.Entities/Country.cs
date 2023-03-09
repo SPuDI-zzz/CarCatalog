@@ -1,6 +1,12 @@
 ﻿namespace CarCatalog.Context.Entities;
-public class Country : BaseEntity
+
+using System.ComponentModel.DataAnnotations;
+
+public class Country
 {
+    [Key]
+    public int Id { get; set; }
+
     public string Name { get; set; }
 
     public virtual ICollection<CarMark> CarMarks { get; set; }

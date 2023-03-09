@@ -1,7 +1,12 @@
 ﻿namespace CarCatalog.Context.Entities;
 
-public class CarDriveType : BaseEntity
+using System.ComponentModel.DataAnnotations;
+
+public class CarDriveType
 {
+    [Key]
+    public int Id { get; set; }
+
     public string Name { get; set; }
 
     public int? IdCarConfiguration { get; set; }
