@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 
-public class MainDbContext : IdentityDbContext<User, IdentityRole<int>, int>
+public class MainDbContext : IdentityDbContext<User, UserRole, int>
 {
     public DbSet<CarMark> CarMarks { get; set; }
     public DbSet<Country> Countrys { get; set; }
