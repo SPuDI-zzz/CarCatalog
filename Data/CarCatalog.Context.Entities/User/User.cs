@@ -8,5 +8,5 @@ public class User : IdentityUser<Guid>
 
     public virtual ICollection<Comment> Comments { get; set; }
 
-    public virtual ICollection<CarForSale> Favorites { get; set; }
+    public virtual ICollection<CarForSale> CarForSales { get; set; }
 }
