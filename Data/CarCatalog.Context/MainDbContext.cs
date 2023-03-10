@@ -2,10 +2,11 @@
 
 using CarCatalog.Context.Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 
-public class MainDbContext : DbContext
+public class MainDbContext : IdentityDbContext<User, IdentityRole<int>, int>
 {
     public DbSet<CarMark> CarMarks { get; set; }
     public DbSet<Country> Countrys { get; set; }
@@ -32,19 +33,19 @@ public class MainDbContext : DbContext
         modelBuilder.Entity<UserRole>()
             .ToTable("user_roles");
         
-        modelBuilder.Entity<IdentityUserToken<Guid>>()
+        modelBuilder.Entity<IdentityUserToken<int>>()
             .ToTable("user_tokens");
         
-        modelBuilder.Entity<IdentityUserRole<Guid>>()
+        modelBuilder.Entity<IdentityUserRole<int>>()
             .ToTable("user_role_owners");
         
-        modelBuilder.Entity<IdentityRoleClaim<Guid>>()
+        modelBuilder.Entity<IdentityRoleClaim<int>>()
             .ToTable("user_role_claims");
         
-        modelBuilder.Entity<IdentityUserLogin<Guid>>()
+        modelBuilder.Entity<IdentityUserLogin<int>>()
             .ToTable("user_logins");
         
-        modelBuilder.Entity<IdentityUserClaim<Guid>>()
+        modelBuilder.Entity<IdentityUserClaim<int>>()
             .ToTable("user_claims");
 
         modelBuilder.Entity<Country>()
