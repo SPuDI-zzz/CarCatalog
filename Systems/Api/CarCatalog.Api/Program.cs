@@ -1,5 +1,6 @@
 using CarCatalog.Api;
 using CarCatalog.Api.Configuration;
+using CarCatalog.Context;
 using CarCatalog.Services.Settings;
 using CarCatalog.Settings;
 
@@ -38,6 +39,9 @@ app.UseStaticFiles();
 app.UseAppHealthChecks();
 
 app.UseAppSwagger();
+
+DbInitializer.Execute(app.Services);
+DbSeeder.Execute(app.Services, true, true);
 
 // Configure the HTTP request pipeline.
 
