@@ -11,5 +11,5 @@ public class CarGeneration : BaseEntity
     public int? IDCarModel { get; set; }
     public CarModel CarModel { get; set; }
 
-    public ICollection<CarConfiguration> Configurations { get; set; }
+    public ICollection<CarConfiguration> CarConfigurations { get; set; }
 }

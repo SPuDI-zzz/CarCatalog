@@ -9,7 +9,6 @@ public class CarDriveType
 
     public string Name { get; set; }
 
-    public int? IdCarConfiguration { get; set; }
-    public CarConfiguration CarConfiguration { get; set; }
+    ICollection<CarConfiguration> CarConfigurations { get; set; }
 }
 

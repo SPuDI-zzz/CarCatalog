@@ -9,5 +9,5 @@ public class CarModel : BaseEntity
     public int? IdCarMark { get; set; }
     public virtual CarMark CarMark { get; set; }
 
-    public virtual ICollection<CarGeneration> Generations { get; set; }
+    public virtual ICollection<CarGeneration> CarGenerations { get; set; }
 }
