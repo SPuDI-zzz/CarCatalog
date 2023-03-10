@@ -11,9 +11,9 @@ public class CarForSale : BaseEntity
     public int Mileage { get; set; }
 
     public int? IdCarConfiguration { get; set; }
-    public CarConfiguration CarConfiguration { get; set; }
+    public virtual CarConfiguration CarConfiguration { get; set; }
 
-    public ICollection<User> Users { get; set; }
+    public virtual ICollection<User> Users { get; set; }
 
-    public ICollection<Comment> Comments { get; set; }
+    public virtual ICollection<Comment> Comments { get; set; }
 }

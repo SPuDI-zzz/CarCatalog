@@ -9,7 +9,7 @@ public class CarGeneration : BaseEntity
     public int YearEnd { get; set; }
 
     public int? IDCarModel { get; set; }
-    public CarModel CarModel { get; set; }
+    public virtual CarModel CarModel { get; set; }
 
-    public ICollection<CarConfiguration> CarConfigurations { get; set; }
+    public virtual ICollection<CarConfiguration> CarConfigurations { get; set; }
 }

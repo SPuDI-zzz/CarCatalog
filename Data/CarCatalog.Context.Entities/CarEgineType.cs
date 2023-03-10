@@ -9,5 +9,5 @@ public class CarEgineType
 
     public string Name { get; set; }
 
-    ICollection<CarConfiguration> CarConfigurations { get; set; }
+    public virtual ICollection<CarConfiguration> CarConfigurations { get; set; }
 }

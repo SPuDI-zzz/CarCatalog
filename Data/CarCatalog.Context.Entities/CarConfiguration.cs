@@ -11,20 +11,20 @@ public class CarConfiguration : BaseEntity
     public bool LeftHandWheel { get; set; }
 
     public int? IdCarDriveType { get; set; }
-    public CarDriveType CarDriveType { get; set; }
+    public virtual CarDriveType CarDriveType { get; set; }
 
     public int? IdCarBodyType { get; set; }
-    public CarBodyType CarBodyType { get; set; }
+    public virtual CarBodyType CarBodyType { get; set; }
 
     public int? IdCarEgineType { get; set; }
-    public CarEgineType CarEgineType { get; set; }
+    public virtual CarEgineType CarEgineType { get; set; }
 
     public int? IdCarTransmission { get; set; }
-    public CarTransmission CarTransmission { get; set; }
+    public virtual CarTransmission CarTransmission { get; set; }
 
     public int? IdCarGeneration { get; set; }
-    public CarGeneration CarGeneration { get; set; }
+    public virtual CarGeneration CarGeneration { get; set; }
 
-    public ICollection<CarForSale> CarForSales { get; set; }
+    public virtual ICollection<CarForSale> CarForSales { get; set; }
 }
 
