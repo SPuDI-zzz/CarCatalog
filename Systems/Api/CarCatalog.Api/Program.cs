@@ -19,6 +19,8 @@ var services = builder.Services;
 services.AddHttpContextAccessor();
 services.AddAppCors();
 
+services.AddAppDbContext();
+
 services.AddAppHealthChecks();
 
 services.AddAppVersioning();
