@@ -5,8 +5,8 @@ using System.Data.SqlTypes;
 public class CarForSale : BaseEntity
 {
     public int Color { get; set; }
-
-    public SqlMoney Price { get; set; }
+    
+    public int Price { get; set; }
 
     public int Mileage { get; set; }
 
