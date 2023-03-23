@@ -62,14 +62,30 @@ public static class DbSeeder
 
     private static async Task ConfigureDemoData(IServiceProvider serviceProvider)
     {
-        await AddBooks(serviceProvider);
+        await AddCountries(serviceProvider);
     }
 
-    private static async Task AddBooks(IServiceProvider serviceProvider)
+    private static async Task AddCountries(IServiceProvider serviceProvider)
     {
         await using var context = DbContext(serviceProvider);
 
         // TODO : add database filling
+        if (context.Countries.Any())
+        {
+            return;
+        }
+
+        var item1 = new Entities.Country 
+        { 
+            Name = "Russia",
+        };
+        context.Countries.Add(item1);
+
+        var item2 = new Entities.Country
+        {
+            Name = "USA",
+        };
+        context.Countries.Add(item2);
 
         context.SaveChanges();
     }
