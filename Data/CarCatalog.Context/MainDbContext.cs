@@ -9,7 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 public class MainDbContext : IdentityDbContext<User, UserRole, int>
 {
     public DbSet<CarMark> CarMarks { get; set; }
-    public DbSet<Country> Countrys { get; set; }
+    public DbSet<Country> Countries { get; set; }
     public DbSet<CarModel> CarModels { get; set; }
     public DbSet<CarGeneration> CarGenerations { get; set; }
     public DbSet<CarConfiguration> CarConfigurations { get; set; }
