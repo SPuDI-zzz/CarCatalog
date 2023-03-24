@@ -28,6 +28,8 @@ services.AddAppVersioning();
 
 services.AddAppSwagger(mainSettings, swaggerSettings);
 
+services.AddAppAutoMappers();
+
 services.AddAppControllerAndViews();
 
 services.RegisterAppServices();
