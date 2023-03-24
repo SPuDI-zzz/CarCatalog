@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Context.Migratio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Services.Country", "Services\CarCatalog.Services.Country\CarCatalog.Services.Country.csproj", "{77C320C2-1DB7-462E-A855-EBA590CD07BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Services.CarDriveType", "Services\CarCatalog.Services.CarDriveType\CarCatalog.Services.CarDriveType.csproj", "{849F19D8-74B5-41B9-A3B9-687FEA97EB43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{77C320C2-1DB7-462E-A855-EBA590CD07BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77C320C2-1DB7-462E-A855-EBA590CD07BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77C320C2-1DB7-462E-A855-EBA590CD07BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{849F19D8-74B5-41B9-A3B9-687FEA97EB43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{849F19D8-74B5-41B9-A3B9-687FEA97EB43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{849F19D8-74B5-41B9-A3B9-687FEA97EB43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{849F19D8-74B5-41B9-A3B9-687FEA97EB43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{9C2B61E0-F2A1-455F-B388-4E0DAD74F5C2} = {0AEA9181-9B52-43A7-BFD7-0E5F0923E1E7}
 		{DCEF16D5-9D6B-417F-BEFF-D2C3935D4880} = {0AEA9181-9B52-43A7-BFD7-0E5F0923E1E7}
 		{77C320C2-1DB7-462E-A855-EBA590CD07BC} = {465E7BA6-7E1B-4D35-B78B-427E279B323D}
+		{849F19D8-74B5-41B9-A3B9-687FEA97EB43} = {465E7BA6-7E1B-4D35-B78B-427E279B323D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48E3F2FE-4236-4A16-A49B-35EF14A0F690}

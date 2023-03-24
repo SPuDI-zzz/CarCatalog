@@ -63,6 +63,43 @@ public static class DbSeeder
     private static async Task ConfigureDemoData(IServiceProvider serviceProvider)
     {
         await AddCountries(serviceProvider);
+        await AddCarDriveTypes(serviceProvider);
+    }
+
+    private static async Task AddCarDriveTypes(IServiceProvider serviceProvider)
+    {
+        await using var context = DbContext(serviceProvider);
+
+        if (context.CarDriveTypes.Any())
+        {
+            return;
+        }
+
+        var item1 = new Entities.CarDriveType
+        {
+            Name = "Front-wheel",
+        };
+        context.CarDriveTypes.Add(item1);
+
+        var item2 = new Entities.CarDriveType
+        {
+            Name = "Rear-wheel",
+        };
+        context.CarDriveTypes.Add(item2);
+
+        var item3 = new Entities.CarDriveType
+        {
+            Name = "All-wheel",
+        };
+        context.CarDriveTypes.Add(item3);
+
+        var item4 = new Entities.CarDriveType
+        {
+            Name = "Hybrid synergetic",
+        };
+        context.CarDriveTypes.Add(item4);
+
+        context.SaveChanges();
     }
 
     private static async Task AddCountries(IServiceProvider serviceProvider)
