@@ -31,9 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Context.Entities
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Migrations", "Migrations", "{0AEA9181-9B52-43A7-BFD7-0E5F0923E1E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Context.MigrationsPostgreSQL", "Data\Migrations\CarCatalog.Context.MigrationsPostgreSQL\CarCatalog.Context.MigrationsPostgreSQL.csproj", "{9C2B61E0-F2A1-455F-B388-4E0DAD74F5C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Context.MigrationsPostgreSQL", "Data\Migrations\CarCatalog.Context.MigrationsPostgreSQL\CarCatalog.Context.MigrationsPostgreSQL.csproj", "{9C2B61E0-F2A1-455F-B388-4E0DAD74F5C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Context.MigrationsMSSQL", "Data\Migrations\CarCatalog.Context.MigrationsMSSQL\CarCatalog.Context.MigrationsMSSQL.csproj", "{DCEF16D5-9D6B-417F-BEFF-D2C3935D4880}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Context.MigrationsMSSQL", "Data\Migrations\CarCatalog.Context.MigrationsMSSQL\CarCatalog.Context.MigrationsMSSQL.csproj", "{DCEF16D5-9D6B-417F-BEFF-D2C3935D4880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Services.Country", "Services\CarCatalog.Services.Country\CarCatalog.Services.Country.csproj", "{77C320C2-1DB7-462E-A855-EBA590CD07BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{DCEF16D5-9D6B-417F-BEFF-D2C3935D4880}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCEF16D5-9D6B-417F-BEFF-D2C3935D4880}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCEF16D5-9D6B-417F-BEFF-D2C3935D4880}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C320C2-1DB7-462E-A855-EBA590CD07BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C320C2-1DB7-462E-A855-EBA590CD07BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C320C2-1DB7-462E-A855-EBA590CD07BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C320C2-1DB7-462E-A855-EBA590CD07BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{0AEA9181-9B52-43A7-BFD7-0E5F0923E1E7} = {7F9058E0-3202-4DA7-882B-A702643BC778}
 		{9C2B61E0-F2A1-455F-B388-4E0DAD74F5C2} = {0AEA9181-9B52-43A7-BFD7-0E5F0923E1E7}
 		{DCEF16D5-9D6B-417F-BEFF-D2C3935D4880} = {0AEA9181-9B52-43A7-BFD7-0E5F0923E1E7}
+		{77C320C2-1DB7-462E-A855-EBA590CD07BC} = {465E7BA6-7E1B-4D35-B78B-427E279B323D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48E3F2FE-4236-4A16-A49B-35EF14A0F690}

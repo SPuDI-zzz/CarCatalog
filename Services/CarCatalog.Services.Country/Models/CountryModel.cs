@@ -16,4 +16,3 @@ public class CountryModelProfile : Profile
         CreateMap<Country, CountryModel>();
     }
 }
-
