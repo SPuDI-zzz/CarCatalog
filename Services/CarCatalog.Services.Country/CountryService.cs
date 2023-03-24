@@ -30,10 +30,9 @@ public class CountryService : ICountryService
             .Take(Math.Max(0, Math.Min(limit, 100)))
             ;
 
-        var data = (await countries
-            .ToListAsync())
-            .Select(country => mapper.Map<CountryModel>(country)
-            );
+        var data = (await countries.ToListAsync())
+            .Select(mapper.Map<CountryModel>)
+            ;
 
         return data;
     }
