@@ -38,6 +38,7 @@
     <ProjectReference Include="..\..\..\Data\CarCatalog.Context\CarCatalog.Context.csproj" />
     <ProjectReference Include="..\..\..\Data\Migrations\CarCatalog.Context.MigrationsMSSQL\CarCatalog.Context.MigrationsMSSQL.csproj" />
     <ProjectReference Include="..\..\..\Data\Migrations\CarCatalog.Context.MigrationsPostgreSQL\CarCatalog.Context.MigrationsPostgreSQL.csproj" />
+    <ProjectReference Include="..\..\..\Services\CarCatalog.Services.Country\CarCatalog.Services.Country.csproj" />
     <ProjectReference Include="..\..\..\Services\CarCatalog.Services.Settings\CarCatalog.Services.Settings.csproj" />
     <ProjectReference Include="..\..\..\Shared\CarCatalog.Common\CarCatalog.Common.csproj" />
     <ProjectReference Include="..\..\..\Shared\CarCatalog.Settings\CarCatalog.Settings.csproj" />
