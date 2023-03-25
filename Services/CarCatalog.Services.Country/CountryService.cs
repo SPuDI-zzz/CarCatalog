@@ -42,7 +42,8 @@ public class CountryService : ICountryService
         using var context = await contextFactory.CreateDbContextAsync();
 
         var country = await context.Countries
-            .FirstOrDefaultAsync(x => x.Id.Equals(countryId));
+            .FirstOrDefaultAsync(x => x.Id.Equals(countryId))
+            ;
 
         var data = mapper.Map<CountryModel>(country);
 
