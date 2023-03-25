@@ -41,7 +41,8 @@ public class CarTransmissionService : ICarTransmissionService
     {
         using var context = await contextFactory.CreateDbContextAsync();
 
-        var carTransmission = await context.CarTransmissions
+        var carTransmission = await context
+            .CarTransmissions
             .FirstOrDefaultAsync(x => x.Id.Equals(carTransmissionId))
             ;
 

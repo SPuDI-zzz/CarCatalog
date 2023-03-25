@@ -40,7 +40,8 @@ public class CarEngineTypeService : ICarEngineTypeService
     {
         using var context = await contextFactory.CreateDbContextAsync();
 
-        var carEngineType = await context.CarEngineTypes
+        var carEngineType = await context
+            .CarEngineTypes
             .FirstOrDefaultAsync(x => x.Id.Equals(carEngineTypeId))
             ;
 
