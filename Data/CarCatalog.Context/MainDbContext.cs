@@ -15,7 +15,7 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
     public DbSet<CarConfiguration> CarConfigurations { get; set; }
     public DbSet<CarBodyType> CarBodyTypes { get; set; }
     public DbSet<CarDriveType> CarDriveTypes { get; set; }
-    public DbSet<CarEgineType> CarEgineTypes { get; set; }
+    public DbSet<CarEngineType> CarEngineTypes { get; set; }
     public DbSet<CarTransmission> CarTransmissions { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Comment> Comments { get; set; }
@@ -81,7 +81,7 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
         modelBuilder.Entity<CarDriveType>()
             .ToTable("car_drive_types");
 
-        modelBuilder.Entity<CarEgineType>()
+        modelBuilder.Entity<CarEngineType>()
             .ToTable("car_engine_types");
 
         modelBuilder.Entity<CarTransmission>()

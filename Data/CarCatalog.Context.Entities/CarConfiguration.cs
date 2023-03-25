@@ -17,7 +17,7 @@ public class CarConfiguration : BaseEntity
     public virtual CarBodyType CarBodyType { get; set; }
 
     public int? IdCarEgineType { get; set; }
-    public virtual CarEgineType CarEgineType { get; set; }
+    public virtual CarEngineType CarEgineType { get; set; }
 
     public int? IdCarTransmission { get; set; }
     public virtual CarTransmission CarTransmission { get; set; }
