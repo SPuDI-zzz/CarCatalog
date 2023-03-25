@@ -2,10 +2,7 @@
 
 using AutoMapper;
 using CarCatalog.Context;
-using CarCatalog.Services.CarBodyType.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 public class CarBodyTypeService : ICarBodyTypeService
 {

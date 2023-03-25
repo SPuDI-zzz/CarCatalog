@@ -1,4 +1,4 @@
-﻿namespace CarCatalog.Services.CarBodyType.Models;
+﻿namespace CarCatalog.Services.CarBodyType;
 
 using AutoMapper;
 using CarCatalog.Context.Entities;
