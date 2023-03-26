@@ -2,6 +2,7 @@
 
 using CarCatalog.Api.Settings;
 using CarCatalog.Services.CarDriveType;
+using CarCatalog.Services.CarMark;
 using CarCatalog.Services.Country;
 using CarCatalog.Services.Settings;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ public static class Bootstrapper
             .AddApiSpecialSettings()
             .AddCountryService()
             .AddCarDriveTypeService()
+            .AddCarMarkService()
             ;
 
         return services;
