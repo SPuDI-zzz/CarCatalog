@@ -4,7 +4,7 @@ using System.Data.SqlTypes;
 
 public class CarForSale : BaseEntity
 {
-    public int Color { get; set; }
+    public string Color { get; set; }
     
     public int Price { get; set; }
 
