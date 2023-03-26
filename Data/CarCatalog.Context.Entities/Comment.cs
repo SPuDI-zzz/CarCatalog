@@ -9,6 +9,8 @@ public class Comment
 
     public string Content { get; set; }
 
+    public DateTimeOffset DateTimeAdded { get; set; }
+
     public int? IdCarForSale { get; set; }
     public virtual CarForSale CarForSale { get; set; }
 
