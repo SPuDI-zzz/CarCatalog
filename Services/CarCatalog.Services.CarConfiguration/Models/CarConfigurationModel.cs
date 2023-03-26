@@ -6,6 +6,7 @@ using System.Net;
 
 public class CarConfigurationModel
 {
+    public int Id { get; set; }
     public int Trunk { get; set; }
 
     public int HorsePower { get; set; }
