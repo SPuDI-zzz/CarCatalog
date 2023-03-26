@@ -17,7 +17,7 @@ namespace CarCatalog.Context.MigrationsMSSQL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.3")
+                .HasAnnotation("ProductVersion", "7.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -112,7 +112,7 @@ namespace CarCatalog.Context.MigrationsMSSQL.Migrations
                     b.ToTable("car_drive_types", (string)null);
                 });
 
-            modelBuilder.Entity("CarCatalog.Context.Entities.CarEgineType", b =>
+            modelBuilder.Entity("CarCatalog.Context.Entities.CarEngineType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -137,8 +137,9 @@ namespace CarCatalog.Context.MigrationsMSSQL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Color")
-                        .HasColumnType("int");
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("IdCarConfiguration")
                         .HasColumnType("int");
@@ -284,6 +285,9 @@ namespace CarCatalog.Context.MigrationsMSSQL.Migrations
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset>("DateTimeAdded")
+                        .HasColumnType("datetimeoffset");
 
                     b.Property<int?>("IdCarForSale")
                         .HasColumnType("int");
@@ -552,7 +556,7 @@ namespace CarCatalog.Context.MigrationsMSSQL.Migrations
                         .WithMany("CarConfigurations")
                         .HasForeignKey("IdCarDriveType");
 
-                    b.HasOne("CarCatalog.Context.Entities.CarEgineType", "CarEgineType")
+                    b.HasOne("CarCatalog.Context.Entities.CarEngineType", "CarEgineType")
                         .WithMany("CarConfigurations")
                         .HasForeignKey("IdCarEgineType");
 
@@ -707,7 +711,7 @@ namespace CarCatalog.Context.MigrationsMSSQL.Migrations
                     b.Navigation("CarConfigurations");
                 });
 
-            modelBuilder.Entity("CarCatalog.Context.Entities.CarEgineType", b =>
+            modelBuilder.Entity("CarCatalog.Context.Entities.CarEngineType", b =>
                 {
                     b.Navigation("CarConfigurations");
                 });
