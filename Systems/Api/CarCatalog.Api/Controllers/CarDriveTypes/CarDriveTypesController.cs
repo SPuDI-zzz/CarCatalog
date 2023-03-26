@@ -14,10 +14,10 @@ public class CarDriveTypesController : ControllerBase
     private readonly IMapper mapper;
     private readonly ICarDriveTypeService carDriveTypeService;
 
-    public CarDriveTypesController(IMapper mapper, ICarDriveTypeService countryService)
+    public CarDriveTypesController(IMapper mapper, ICarDriveTypeService carDriveTypeService)
     {
         this.mapper = mapper;
-        this.carDriveTypeService = countryService;
+        this.carDriveTypeService = carDriveTypeService;
     }
 
     [ProducesResponseType(typeof(IEnumerable<CarDriveTypeResponse>), 200)]
