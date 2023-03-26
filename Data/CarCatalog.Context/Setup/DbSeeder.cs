@@ -1,5 +1,6 @@
 ﻿namespace CarCatalog.Context;
 
+//using CarCatalog.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -64,6 +65,60 @@ public static class DbSeeder
     {
         await AddCountries(serviceProvider);
         await AddCarDriveTypes(serviceProvider);
+        await AddCarMarks(serviceProvider);
+    }
+
+    private static async Task AddCarMarks(IServiceProvider serviceProvider)
+    {
+        await using var context = DbContext(serviceProvider);
+
+        if (context.CarMarks.Any())
+        {
+            return;
+        }
+
+        Entities.Country germany = context.Countries
+            .Where(c => c.Name == "Germany")
+            .First()
+            ;
+
+        context.CarMarks.Add(new Entities.CarMark
+        {
+            Name = "BMW",
+            IdCountry = germany.Id,
+        });
+
+        context.CarMarks.Add(new Entities.CarMark
+        {
+            Name = "Audi",
+            IdCountry = germany.Id,
+        });
+
+        context.CarMarks.Add(new Entities.CarMark
+        {
+            Name = "Volkswagen",
+            IdCountry = germany.Id,
+        });
+
+        context.CarMarks.Add(new Entities.CarMark
+        {
+            Name = "Porsche",
+            IdCountry = germany.Id,
+        });
+
+        context.CarMarks.Add(new Entities.CarMark
+        {
+            Name = "Mercedes-Benz",
+            IdCountry = germany.Id,
+        });
+
+        context.CarMarks.Add(new Entities.CarMark
+        {
+            Name = "Opel",
+            IdCountry = germany.Id,
+        });
+
+        context.SaveChanges();
     }
 
     private static async Task AddCarDriveTypes(IServiceProvider serviceProvider)
@@ -75,29 +130,25 @@ public static class DbSeeder
             return;
         }
 
-        var item1 = new Entities.CarDriveType
+        context.CarDriveTypes.Add(new Entities.CarDriveType
         {
             Name = "Front-wheel",
-        };
-        context.CarDriveTypes.Add(item1);
+        });
 
-        var item2 = new Entities.CarDriveType
+        context.CarDriveTypes.Add(new Entities.CarDriveType
         {
             Name = "Rear-wheel",
-        };
-        context.CarDriveTypes.Add(item2);
+        });
 
-        var item3 = new Entities.CarDriveType
+        context.CarDriveTypes.Add(new Entities.CarDriveType
         {
             Name = "All-wheel",
-        };
-        context.CarDriveTypes.Add(item3);
+        });
 
-        var item4 = new Entities.CarDriveType
+        context.CarDriveTypes.Add(new Entities.CarDriveType
         {
             Name = "Hybrid synergetic",
-        };
-        context.CarDriveTypes.Add(item4);
+        });
 
         context.SaveChanges();
     }
@@ -112,17 +163,50 @@ public static class DbSeeder
             return;
         }
 
-        var item1 = new Entities.Country 
-        { 
+        context.Countries.Add(new Entities.Country
+        {
             Name = "Russia",
-        };
-        context.Countries.Add(item1);
+        });
 
-        var item2 = new Entities.Country
+        context.Countries.Add(new Entities.Country
         {
             Name = "USA",
-        };
-        context.Countries.Add(item2);
+        });
+
+        context.Countries.Add(new Entities.Country
+        {
+            Name = "Germany",
+        });
+
+        context.Countries.Add(new Entities.Country
+        {
+            Name = "France",
+        });
+
+        context.Countries.Add(new Entities.Country
+        {
+            Name = "Japan",
+        });
+
+        context.Countries.Add(new Entities.Country
+        {
+            Name = "South Korea",
+        });
+
+        context.Countries.Add(new Entities.Country
+        {
+            Name = "China",
+        });
+
+        context.Countries.Add(new Entities.Country
+        {
+            Name = "Sweden",
+        });
+
+        context.Countries.Add(new Entities.Country
+        {
+            Name = "Great Britain",
+        });
 
         context.SaveChanges();
     }
