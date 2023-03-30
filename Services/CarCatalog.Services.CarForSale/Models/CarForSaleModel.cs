@@ -13,15 +13,12 @@ public class CarForSaleModel
     public int Mileage { get; set; }
 
     public int IdCarConfiguration { get; set; }
-    public CarConfiguration? CarConfiguration { get; set; }
 }
 
 public class CarForSaleProfile : Profile
 {
     public CarForSaleProfile()
     {
-        CreateMap<CarForSale, CarForSaleModel>()
-            .ForMember(dest => dest.CarConfiguration, opt => opt.MapFrom(src => src.CarConfiguration))
-            ;
+        CreateMap<CarForSale, CarForSaleModel>();
     }
 }
