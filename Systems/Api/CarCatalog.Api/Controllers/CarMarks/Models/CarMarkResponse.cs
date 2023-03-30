@@ -16,8 +16,6 @@ public class CarMarkResponseProfile : Profile
 {
     public CarMarkResponseProfile()
     {
-        CreateMap <CarMarkModel, CarMarkResponse>()
-            .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country))
-            ;
+        CreateMap <CarMarkModel, CarMarkResponse>();
     }
 }
