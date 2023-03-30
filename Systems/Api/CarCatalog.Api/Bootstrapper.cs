@@ -9,6 +9,7 @@ using CarCatalog.Services.CarForSale;
 using CarCatalog.Services.CarGeneration;
 using CarCatalog.Services.CarMark;
 using CarCatalog.Services.CarModel;
+using CarCatalog.Services.CarTransmission;
 using CarCatalog.Services.Country;
 using CarCatalog.Services.Settings;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,7 @@ public static class Bootstrapper
             .AddCarForSaleService()
             .AddCarGenerationService()
             .AddCarModelService()
+            .AddCarTransmissionService()
             ;
 
         return services;
