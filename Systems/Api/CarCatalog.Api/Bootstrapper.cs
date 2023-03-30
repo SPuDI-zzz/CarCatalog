@@ -1,6 +1,7 @@
 ﻿namespace CarCatalog.Api;
 
 using CarCatalog.Api.Settings;
+using CarCatalog.Services.CarBodyType;
 using CarCatalog.Services.CarDriveType;
 using CarCatalog.Services.CarMark;
 using CarCatalog.Services.Country;
@@ -18,6 +19,7 @@ public static class Bootstrapper
             .AddCountryService()
             .AddCarDriveTypeService()
             .AddCarMarkService()
+            .AddCarBodyTypeService()
             ;
 
         return services;
