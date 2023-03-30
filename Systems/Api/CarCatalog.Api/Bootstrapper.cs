@@ -7,6 +7,7 @@ using CarCatalog.Services.CarDriveType;
 using CarCatalog.Services.CarEngineType;
 using CarCatalog.Services.CarGeneration;
 using CarCatalog.Services.CarMark;
+using CarCatalog.Services.CarModel;
 using CarCatalog.Services.Country;
 using CarCatalog.Services.Settings;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,6 +27,7 @@ public static class Bootstrapper
             .AddCarConfigurationService()
             .AddCarEngineTypeService()
             .AddCarGenerationService()
+            .AddCarModelService()
             ;
 
         return services;
