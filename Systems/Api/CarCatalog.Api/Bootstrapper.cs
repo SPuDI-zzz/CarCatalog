@@ -2,6 +2,7 @@
 
 using CarCatalog.Api.Settings;
 using CarCatalog.Services.CarBodyType;
+using CarCatalog.Services.CarConfiguration;
 using CarCatalog.Services.CarDriveType;
 using CarCatalog.Services.CarMark;
 using CarCatalog.Services.Country;
@@ -20,6 +21,7 @@ public static class Bootstrapper
             .AddCarDriveTypeService()
             .AddCarMarkService()
             .AddCarBodyTypeService()
+            .AddCarConfigurationService()
             ;
 
         return services;
