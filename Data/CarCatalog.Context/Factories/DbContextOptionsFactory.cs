@@ -6,39 +6,25 @@ public static class DbContextOptionsFactory
 {
     private const string migrationProjctPrefix = "CarCatalog.Context.Migrations";
 
-    public static DbContextOptions<MainDbContext> Create(string connStr, DbType dbType)
+    public static DbContextOptions<MainDbContext> Create(string connStr)
     {
         var bldr = new DbContextOptionsBuilder<MainDbContext>();
 
-        Configure(connStr, dbType).Invoke(bldr);
+        Configure(connStr).Invoke(bldr);
 
         return bldr.Options;
     }
 
-    public static Action<DbContextOptionsBuilder> Configure(string connStr, DbType dbType)
+    public static Action<DbContextOptionsBuilder> Configure(string connStr)
     {
         return (bldr) =>
         {
-            switch (dbType)
-            {
-                case DbType.MSSQL:
-                    bldr.UseSqlServer(connStr,
-                        opts => opts
-                                .CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds)
-                                .MigrationsHistoryTable("_EFMigrationsHistory", "public")
-                                .MigrationsAssembly($"{migrationProjctPrefix}{DbType.MSSQL}")
-                        );
-                    break;
-
-                case DbType.PostgreSQL:
-                    bldr.UseNpgsql(connStr,
-                        opts => opts
-                                .CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds)
-                                .MigrationsHistoryTable("_EFMigrationsHistory", "public")
-                                .MigrationsAssembly($"{migrationProjctPrefix}{DbType.PostgreSQL}")
-                        );
-                    break;
-            }
+            bldr.UseNpgsql(connStr,
+                opts => opts
+                        .CommandTimeout((int)TimeSpan.FromMinutes(10).TotalSeconds)
+                        .MigrationsHistoryTable("_EFMigrationsHistory", "public")
+                        .MigrationsAssembly($"{migrationProjctPrefix}PostgreSQL")
+                );            
 
             bldr.EnableSensitiveDataLogging();
             // TODO : add lazy loading
