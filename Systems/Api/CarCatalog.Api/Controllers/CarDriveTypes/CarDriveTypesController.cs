@@ -38,8 +38,8 @@ public class CarDriveTypesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<CarDriveTypeResponse> GetCarDriveTypeById([FromRoute] int id)
     {
-        var carDriveTypes = await carDriveTypeService.GetCarDriveType(id);
-        var response = mapper.Map<CarDriveTypeResponse>(carDriveTypes);
+        var carDriveType = await carDriveTypeService.GetCarDriveType(id);
+        var response = mapper.Map<CarDriveTypeResponse>(carDriveType);
 
         return response;
     }
