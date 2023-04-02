@@ -49,4 +49,6 @@ DbSeeder.Execute(app.Services, true, true);
 
 app.UseAppControllerAndViews();
 
+app.UseAppMiddlewares();
+
 app.Run();
