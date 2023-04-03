@@ -33,6 +33,14 @@ services:
     env_file:
       - env.api
 
+  carcatalog.identity:
+    ports:
+      - "10001:80"
+    networks:
+      - shared.carcatalog.net
+    env_file:
+      - env.identity
+
 networks:
   shared.carcatalog.net:
     name: car_catalog_net

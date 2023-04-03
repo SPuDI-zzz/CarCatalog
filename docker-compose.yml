@@ -16,4 +16,13 @@ services:
     depends_on:
       - carcatalog.postgresql
       - carcatalog.redis
-      
+
+  carcatalog.identity:
+    image: ${DOCKER_REGISTRY-}carcatalogidentity
+    build:
+      context: .
+      dockerfile: Systems/Identity/CarCatalog.Identity/Dockerfile
+    depends_on:
+      - carcatalog.postgresql
+      - carcatalog.redis
+      - carcatalog.api
