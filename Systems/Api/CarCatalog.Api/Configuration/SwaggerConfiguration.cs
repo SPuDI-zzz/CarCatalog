@@ -23,7 +23,7 @@ public static class SwaggerConfiguration
     /// <param name="services">Services collection</param>
     /// <param name="mainSettings"></param>
     /// <param name="swaggerSettings"></param>
-    public static IServiceCollection AddAppSwagger(this IServiceCollection services, MainSettings mainSettings/*, IdentitySettings identitySettings*/, SwaggerSettings swaggerSettings)
+    public static IServiceCollection AddAppSwagger(this IServiceCollection services, IdentitySettings identitySettings, SwaggerSettings swaggerSettings)
     {
         if (!swaggerSettings.Enabled)
             return services;
@@ -67,14 +67,11 @@ public static class SwaggerConfiguration
                 {
                     Password = new OpenApiOAuthFlow
                     {
-                        // TODO : add IdentitySettings and use it
-                        TokenUrl = new Uri($"{/*identitySettings.Url*/mainSettings.MainUrl}/connect/token"),
+                        TokenUrl = new Uri($"{identitySettings.Url}/connect/token"),
                         Scopes = new Dictionary<string, string>
                         {
-                            {"api", "Full API access"},
-                            // TODO : for IdentittyServer
-                            /*{AppScopes.BooksRead, "BooksRead"},
-                            {AppScopes.BooksWrite, "BooksWrite"}*/
+                            {AppScopes.BooksRead, "BooksRead"},
+                            {AppScopes.BooksWrite, "BooksWrite"}
                         }
                     }
                 }
