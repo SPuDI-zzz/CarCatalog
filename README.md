@@ -4,7 +4,7 @@
 
 **Start the PostgreSQL in the Docker**
 
-Download the PostgreSQL image in Docker.
+Download the PostgreSQL image in Docker. Write in Developer PowerShell
 
 ```sh
 docker pull postgres
@@ -18,6 +18,7 @@ docker run --name postgres --restart=always -p 25432:5432 -e POSTGRES_USER=postg
 
 ## Start the project
 
-- Open the project.
-- Set as Startup Project CarCatalog.Api
-- Start
+- Developer PowerShell in Visual Studio
+- Write docker-compose build
+- Write docker-compose up
+- Open in browser http://localhost:10000/
