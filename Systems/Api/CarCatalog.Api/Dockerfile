@@ -23,6 +23,7 @@ COPY ["Services/CarCatalog.Services.CarTransmission/CarCatalog.Services.CarTrans
 COPY ["Services/CarCatalog.Services.Comment/CarCatalog.Services.Comment.csproj", "Services/CarCatalog.Services.Comment/"]
 COPY ["Services/CarCatalog.Services.Country/CarCatalog.Services.Country.csproj", "Services/CarCatalog.Services.Country/"]
 COPY ["Services/CarCatalog.Services.Settings/CarCatalog.Services.Settings.csproj", "Services/CarCatalog.Services.Settings/"]
+COPY ["Services/CarCatalog.Services.UserAccount/CarCatalog.Services.UserAccount.csproj", "Services/CarCatalog.Services.UserAccount/"]
 COPY ["Shared/CarCatalog.Common/CarCatalog.Common.csproj", "Shared/CarCatalog.Common/"]
 COPY ["Systems/Api/CarCatalog.Api.Settings/CarCatalog.Api.Settings.csproj", "Systems/Api/CarCatalog.Api.Settings/"]
 RUN dotnet restore "Systems/Api/CarCatalog.Api/CarCatalog.Api.csproj"
