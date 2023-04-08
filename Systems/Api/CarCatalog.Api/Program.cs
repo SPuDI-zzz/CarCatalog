@@ -20,7 +20,9 @@ var services = builder.Services;
 services.AddHttpContextAccessor();
 services.AddAppCors();
 
-services.AddAppDbContext();
+services.AddAppDbContext(builder.Configuration);
+
+services.AddAppAuth(identitySettings);
 
 services.AddAppHealthChecks();
 
@@ -42,13 +44,13 @@ app.UseAppHealthChecks();
 
 app.UseAppSwagger();
 
-DbInitializer.Execute(app.Services);
-DbSeeder.Execute(app.Services, true, true);
-
-// Configure the HTTP request pipeline.
+app.UseAppAuth();
 
 app.UseAppControllerAndViews();
 
 app.UseAppMiddlewares();
+
+DbInitializer.Execute(app.Services);
+DbSeeder.Execute(app.Services, true, true);
 
 app.Run();
