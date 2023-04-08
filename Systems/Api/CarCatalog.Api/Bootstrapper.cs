@@ -12,6 +12,7 @@ using CarCatalog.Services.CarModel;
 using CarCatalog.Services.CarTransmission;
 using CarCatalog.Services.Country;
 using CarCatalog.Services.Settings;
+using CarCatalog.Services.UserAccount;
 using Microsoft.Extensions.DependencyInjection;
 
 public static class Bootstrapper
@@ -33,6 +34,7 @@ public static class Bootstrapper
             .AddCarGenerationService()
             .AddCarModelService()
             .AddCarTransmissionService()
+            .AddUserAccountService()
             ;
 
         return services;
