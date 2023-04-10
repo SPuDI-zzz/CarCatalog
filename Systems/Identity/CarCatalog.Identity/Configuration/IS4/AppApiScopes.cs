@@ -8,7 +8,8 @@ public static class AppApiScopes
     public static IEnumerable<ApiScope> ApiScopes =>
         new List<ApiScope>
         {
-            new ApiScope(AppScopes.BooksRead, "Access to books API - Read data"),
-            new ApiScope(AppScopes.BooksWrite, "Access to books API - Write data")
+            new ApiScope(AppScopes.CarsWrite, "Access to cars API - Write data"),
+            new ApiScope(AppScopes.CommentsWrite, "Access to comments API - Write data"),
+            new ApiScope(AppScopes.FavoritesWrite, "Access to favorites API - Write data")
         };
 }
