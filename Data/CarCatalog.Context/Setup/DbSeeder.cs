@@ -1,8 +1,9 @@
 ﻿namespace CarCatalog.Context;
 
+using CarCatalog.Common.Security;
 using CarCatalog.Context.Entities;
-
-//using CarCatalog.Context.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,48 +12,10 @@ public static class DbSeeder
     private static IServiceScope ServiceScope(IServiceProvider serviceProvider) => serviceProvider.GetService<IServiceScopeFactory>()!.CreateScope();
     private static MainDbContext DbContext(IServiceProvider serviceProvider) => ServiceScope(serviceProvider).ServiceProvider.GetRequiredService<IDbContextFactory<MainDbContext>>().CreateDbContext();
 
-    //private static readonly string masterUserName = "Admin";
-    //private static readonly string masterUserEmail = "admin@dsrnetscool.com";
-    //private static readonly string masterUserPassword = "Pass123#";
-
-    //private static void ConfigureAdministrator(IServiceScope scope)
-    //{
-    //    //    var defaults = scope.ServiceProvider.GetService<IDefaultsSettings>();
-
-    //    //    if (defaults != null)
-    //    //    {
-    //    //        var userService = scope.ServiceProvider.GetService<IUserService>();
-    //    //        if (addAdmin && (!userService?.Any() ?? false))
-    //    //        {
-    //    //            var user = userService.Create(new CreateUserModel
-    //    //            {
-    //    //                Type = UserType.ForPortal,
-    //    //                Status = UserStatus.Active,
-    //    //                Name = defaults.AdministratorName,
-    //    //                Password = defaults.AdministratorPassword,
-    //    //                Email = defaults.AdministratorEmail,
-    //    //                IsEmailConfirmed = !defaults.AdministratorEmail.IsNullOrEmpty(),
-    //    //                Phone = null,
-    //    //                IsPhoneConfirmed = false,
-    //    //                IsChangePasswordNeeded = true
-    //    //            })
-    //    //                .GetAwaiter()
-    //    //                .GetResult();
-
-    //    //            userService.SetUserRoles(user.Id, Infrastructure.User.UserRole.Administrator).GetAwaiter().GetResult();
-    //    //        }
-    //    //    }
-    //}
-
     public static void Execute(IServiceProvider serviceProvider, bool addDemoData, bool addAdmin = true)
     {
         using var scope = ServiceScope(serviceProvider);
         ArgumentNullException.ThrowIfNull(scope);
-
-        //if (addAdmin)
-        //{
-        //    ConfigureAdministrator(scope);
-        //}
 
         if (addDemoData)
         {
@@ -75,6 +38,34 @@ public static class DbSeeder
         await AddCarTransmissions(serviceProvider);  
         await AddCarConfigurations(serviceProvider);
         await AddCarsForSale(serviceProvider);
+        await AddUserRoles(serviceProvider);
+    }
+
+    private static async Task AddUserRoles(IServiceProvider serviceProvider)
+    {
+        await using var context = DbContext(serviceProvider);
+
+        if (context.UserRoles.Any())
+        {
+            return;
+        }
+
+        context.UserRoles.Add(new Entities.UserRole
+        {
+            Name = AppRoles.Admin,
+        });
+
+        context.UserRoles.Add(new Entities.UserRole
+        {
+            Name = AppRoles.User,
+        });
+
+        context.UserRoles.Add(new Entities.UserRole
+        {
+            Name = AppRoles.Seller,
+        });
+
+        context.SaveChanges();
     }
 
     private static async Task AddCarConfigurations(IServiceProvider serviceProvider)

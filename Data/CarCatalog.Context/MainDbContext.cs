@@ -18,6 +18,7 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
     public DbSet<CarEngineType> CarEngineTypes { get; set; }
     public DbSet<CarTransmission> CarTransmissions { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<UserRole> UserRoles { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<CarForSale> CarsForSale { get; set; }
 

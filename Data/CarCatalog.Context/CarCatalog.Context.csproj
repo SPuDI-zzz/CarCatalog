@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\CarCatalog.Common\CarCatalog.Common.csproj" />
     <ProjectReference Include="..\..\Shared\CarCatalog.Settings\CarCatalog.Settings.csproj" />
     <ProjectReference Include="..\CarCatalog.Context.Entities\CarCatalog.Context.Entities.csproj" />
   </ItemGroup>
