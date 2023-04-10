@@ -53,8 +53,9 @@ public static class AuthConfiguration
 
         services.AddAuthorization(options =>
         {
-            options.AddPolicy(AppScopes.BooksRead, policy => policy.RequireClaim("scope", AppScopes.BooksRead));
-            options.AddPolicy(AppScopes.BooksWrite, policy => policy.RequireClaim("scope", AppScopes.BooksWrite));
+            options.AddPolicy(AppScopes.CarsWrite, policy => policy.RequireClaim("scope", AppScopes.CarsWrite));
+            options.AddPolicy(AppScopes.CommentsWrite, policy => policy.RequireClaim("scope", AppScopes.CommentsWrite));
+            options.AddPolicy(AppScopes.FavoritesWrite, policy => policy.RequireClaim("scope", AppScopes.FavoritesWrite));
         });
 
         return services;
