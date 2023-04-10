@@ -70,8 +70,9 @@ public static class SwaggerConfiguration
                         TokenUrl = new Uri($"{identitySettings.Url}/connect/token"),
                         Scopes = new Dictionary<string, string>
                         {
-                            {AppScopes.BooksRead, "BooksRead"},
-                            {AppScopes.BooksWrite, "BooksWrite"}
+                            {AppScopes.CarsWrite, "CarsRead"},
+                            {AppScopes.CommentsWrite, "CommentsWrite"},
+                            {AppScopes.FavoritesWrite, "FavoritesWrite"}
                         }
                     }
                 }
