@@ -2,6 +2,6 @@
 
 public interface ICarModelService
 {
-    Task<IEnumerable<CarModelModel>> GetCarModels(int offset = 0, int limit = 10);
+    Task<IEnumerable<CarModelModel>> GetCarModels(GetCarModelsModel model);
     Task<CarModelModel> GetCarModel(int carModelId);
 }

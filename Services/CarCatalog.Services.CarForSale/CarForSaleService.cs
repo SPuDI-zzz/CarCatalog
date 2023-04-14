@@ -1,6 +1,7 @@
 ﻿namespace CarCatalog.Services.CarForSale;
 
 using AutoMapper;
+using CarCatalog.Common.Validator;
 using CarCatalog.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,15 +9,23 @@ public class CarForSaleService : ICarForSaleService
 {
     private readonly IDbContextFactory<MainDbContext> contextFactory;
     private readonly IMapper mapper;
+    private readonly IModelValidator<GetCarsForSaleModel> getCarsForSaleModelValidator;
 
-    public CarForSaleService(IDbContextFactory<MainDbContext> contextFactory, IMapper mapper)
+    public CarForSaleService(
+        IDbContextFactory<MainDbContext> contextFactory
+        , IMapper mapper
+        , IModelValidator<GetCarsForSaleModel> getCarsForSaleModelValidator
+        )
     {
         this.contextFactory = contextFactory;
         this.mapper = mapper;
+        this.getCarsForSaleModelValidator = getCarsForSaleModelValidator;
     }
 
-    public async Task<IEnumerable<CarForSaleModel>> GetCarsForSale(int offset = 0, int limit = 10)
+    public async Task<IEnumerable<CarForSaleModel>> GetCarsForSale(GetCarsForSaleModel model)
     {
+        getCarsForSaleModelValidator.Check(model);
+
         using var context = await contextFactory.CreateDbContextAsync();
 
         var carsForSale = context
@@ -26,8 +35,8 @@ public class CarForSaleService : ICarForSaleService
             ;
 
         carsForSale = carsForSale
-            .Skip(Math.Max(offset, 0))
-            .Take(Math.Max(0, Math.Min(limit, 100)))
+            .Skip(model.Offset)
+            .Take(model.Limit)
             ;
 
         var data = (await carsForSale.ToListAsync())

@@ -22,9 +22,9 @@ public class CarMarksController : ControllerBase
 
     [ProducesResponseType(typeof(IEnumerable<CarMarkResponse>), 200)]
     [HttpGet("")]
-    public async Task<IEnumerable<CarMarkResponse>> GetCarMarks([FromQuery] int offset = 0, [FromQuery] int limit = 10)
+    public async Task<IEnumerable<CarMarkResponse>> GetCarMarks([FromQuery] CarMarkRequest request)
     {
-        var carMarks = await carMarkService.GetCarMarks(offset, limit);
+        var carMarks = await carMarkService.GetCarMarks(mapper.Map<GetCarMarksModel>(request));
         var response = mapper.Map<IEnumerable<CarMarkResponse>>(carMarks);
 
         return response;

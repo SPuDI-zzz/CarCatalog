@@ -1,6 +1,7 @@
 ﻿namespace CarCatalog.Services.CarGeneration;
 
 using AutoMapper;
+using CarCatalog.Common.Validator;
 using CarCatalog.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,15 +9,23 @@ public class CarGenerationService : ICarGenerationService
 {
     private readonly IDbContextFactory<MainDbContext> contextFactory;
     private readonly IMapper mapper;
+    private readonly IModelValidator<GetCarGenerationsModel> getCarGenerationsModelValidator;
 
-    public CarGenerationService(IDbContextFactory<MainDbContext> contextFactory, IMapper mapper)
+    public CarGenerationService(
+        IDbContextFactory<MainDbContext> contextFactory
+        , IMapper mapper
+        , IModelValidator<GetCarGenerationsModel> getCarGenerationsModelValidator
+        )
     {
         this.contextFactory = contextFactory;
         this.mapper = mapper;
+        this.getCarGenerationsModelValidator = getCarGenerationsModelValidator;
     }
 
-    public async Task<IEnumerable<CarGenerationModel>> GetCarGenerations(int offset = 0, int limit = 10)
+    public async Task<IEnumerable<CarGenerationModel>> GetCarGenerations(GetCarGenerationsModel model)
     {
+        getCarGenerationsModelValidator.Check(model);
+
         using var context = await contextFactory.CreateDbContextAsync();
 
         var carGenerations = context
@@ -26,8 +35,8 @@ public class CarGenerationService : ICarGenerationService
             ;
 
         carGenerations = carGenerations
-            .Skip(Math.Max(offset, 0))
-            .Take(Math.Max(0, Math.Min(limit, 100)))
+            .Skip(model.Offset)
+            .Take(model.Limit)
             ;
 
         var data = (await carGenerations.ToListAsync())

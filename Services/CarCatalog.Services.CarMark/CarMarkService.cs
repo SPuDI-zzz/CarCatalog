@@ -1,6 +1,7 @@
 ﻿namespace CarCatalog.Services.CarMark;
 
 using AutoMapper;
+using CarCatalog.Common.Validator;
 using CarCatalog.Context;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,15 +9,23 @@ public class CarMarkService : ICarMarkService
 {
     private readonly IDbContextFactory<MainDbContext> contextFactory;
     private readonly IMapper mapper;
+    private readonly IModelValidator<GetCarMarksModel> getCarMarksModelValidator;
 
-    public CarMarkService(IDbContextFactory<MainDbContext> contextFactory, IMapper mapper)
+    public CarMarkService(
+        IDbContextFactory<MainDbContext> contextFactory
+        , IMapper mapper
+        , IModelValidator<GetCarMarksModel> getCarMarksModelValidator
+        )
     {
         this.contextFactory = contextFactory;
         this.mapper = mapper;
+        this.getCarMarksModelValidator = getCarMarksModelValidator;
     }
 
-    public async Task<IEnumerable<CarMarkModel>> GetCarMarks(int offset = 0, int limit = 10)
+    public async Task<IEnumerable<CarMarkModel>> GetCarMarks(GetCarMarksModel model)
     {
+        getCarMarksModelValidator.Check(model);
+
         using var context = await contextFactory.CreateDbContextAsync();
 
         var carMarks = context
@@ -26,8 +35,8 @@ public class CarMarkService : ICarMarkService
             ;
 
         carMarks = carMarks
-            .Skip(Math.Max(offset, 0))
-            .Take(Math.Max(0, Math.Min(limit, 100)))
+            .Skip(model.Offset)
+            .Take(model.Limit)
             ;
 
         var data = (await carMarks.ToListAsync())

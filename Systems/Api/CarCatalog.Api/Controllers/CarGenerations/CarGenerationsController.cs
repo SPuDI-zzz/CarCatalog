@@ -22,9 +22,9 @@ public class CarGenerationsController : ControllerBase
 
     [ProducesResponseType(typeof(IEnumerable<CarGenerationResponse>), 200)]
     [HttpGet("")]
-    public async Task<IEnumerable<CarGenerationResponse>> GetCarGenerations([FromQuery] int offset = 0, [FromQuery] int limit = 10)
+    public async Task<IEnumerable<CarGenerationResponse>> GetCarGenerations([FromQuery] CarGenerationRequest request)
     {
-        var carGenerations = await carGenerationService.GetCarGenerations(offset, limit);
+        var carGenerations = await carGenerationService.GetCarGenerations(mapper.Map<GetCarGenerationsModel>(request));
         var response = mapper.Map<IEnumerable<CarGenerationResponse>>(carGenerations);
 
         return response;

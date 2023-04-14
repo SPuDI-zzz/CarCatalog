@@ -2,6 +2,6 @@
 
 public interface ICarForSaleService
 {
-    Task<IEnumerable<CarForSaleModel>> GetCarsForSale(int offset = 0, int limit = 10);
+    Task<IEnumerable<CarForSaleModel>> GetCarsForSale(GetCarsForSaleModel model);
     Task<CarForSaleModel> GetCarForSale(int carForSaleId);
 }

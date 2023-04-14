@@ -2,6 +2,6 @@
 
 public interface ICarMarkService
 {
-    Task<IEnumerable<CarMarkModel>> GetCarMarks(int offset = 0, int limit = 10);
+    Task<IEnumerable<CarMarkModel>> GetCarMarks(GetCarMarksModel model);
     Task<CarMarkModel> GetCarMark(int carMarkId);
 }

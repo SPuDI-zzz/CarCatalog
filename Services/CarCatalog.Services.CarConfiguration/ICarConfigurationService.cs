@@ -2,6 +2,6 @@
 
 public interface ICarConfigurationService
 {
-    Task<IEnumerable<CarConfigurationModel>> GetCarConfigurations(int offset = 0, int limit = 10);
+    Task<IEnumerable<CarConfigurationModel>> GetCarConfigurations(GetCarConfigurationsModel model);
     Task<CarConfigurationModel> GetCarConfiguration(int carConfigurationId);
 }
