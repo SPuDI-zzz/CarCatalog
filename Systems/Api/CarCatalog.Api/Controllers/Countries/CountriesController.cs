@@ -22,9 +22,9 @@ public class CountriesController : ControllerBase
 
     [ProducesResponseType(typeof(IEnumerable<CountryResponse>), 200)]
     [HttpGet("")]
-    public async Task<IEnumerable<CountryResponse>> GetCountries([FromQuery] int offset = 0, [FromQuery] int limit = 10)
+    public async Task<IEnumerable<CountryResponse>> GetCountries()
     {
-        var countries = await countryService.GetCountries(offset, limit);
+        var countries = await countryService.GetCountries();
         var response = mapper.Map<IEnumerable<CountryResponse>>(countries);
 
         return response;

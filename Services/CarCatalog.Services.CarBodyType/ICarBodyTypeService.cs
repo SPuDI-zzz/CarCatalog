@@ -2,6 +2,6 @@
 
 public interface ICarBodyTypeService
 {
-    Task<IEnumerable<CarBodyTypeModel>> GetCarBodyTypes(int offset = 0, int limit = 10);
+    Task<IEnumerable<CarBodyTypeModel>> GetCarBodyTypes();
     Task<CarBodyTypeModel> GetCarBodyType(int carBodyTypeId);
 }

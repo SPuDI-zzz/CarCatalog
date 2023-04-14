@@ -2,6 +2,6 @@
 
 public interface ICarTransmissionService
 {
-    Task<IEnumerable<CarTransmissionModel>> GetCarTransmissions(int offset = 0, int limit = 10);
+    Task<IEnumerable<CarTransmissionModel>> GetCarTransmissions();
     Task<CarTransmissionModel> GetCarTransmission(int carTransmissionId);
 }

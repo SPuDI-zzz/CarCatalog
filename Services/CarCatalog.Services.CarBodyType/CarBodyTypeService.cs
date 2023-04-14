@@ -9,24 +9,22 @@ public class CarBodyTypeService : ICarBodyTypeService
     private readonly IDbContextFactory<MainDbContext> contextFactory;
     private readonly IMapper mapper;
 
-    public CarBodyTypeService(IDbContextFactory<MainDbContext> contextFactory, IMapper mapper)
+    public CarBodyTypeService(
+        IDbContextFactory<MainDbContext> contextFactory
+        , IMapper mapper
+        )
     {
         this.contextFactory = contextFactory;
         this.mapper = mapper;
     }
 
-    public async Task<IEnumerable<CarBodyTypeModel>> GetCarBodyTypes(int offset = 0, int limit = 10)
+    public async Task<IEnumerable<CarBodyTypeModel>> GetCarBodyTypes()
     {
         using var context = await contextFactory.CreateDbContextAsync();
 
         var carBodyTypes = context
             .CarBodyTypes
             .AsQueryable()
-            ;
-
-        carBodyTypes = carBodyTypes
-            .Skip(Math.Max(offset, 0))
-            .Take(Math.Max(0, Math.Min(limit, 100)))
             ;
 
         var data = (await carBodyTypes.ToListAsync())

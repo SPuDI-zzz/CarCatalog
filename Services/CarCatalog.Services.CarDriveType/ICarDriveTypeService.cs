@@ -2,6 +2,6 @@
 
 public interface ICarDriveTypeService
 {
-    Task<IEnumerable<CarDriveTypeModel>> GetCarDriveTypes(int offset = 0, int limit = 10);
+    Task<IEnumerable<CarDriveTypeModel>> GetCarDriveTypes();
     Task<CarDriveTypeModel> GetCarDriveType(int carDriveTypeId);
 }

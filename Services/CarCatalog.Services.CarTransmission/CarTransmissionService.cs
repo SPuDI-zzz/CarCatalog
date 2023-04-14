@@ -2,7 +2,6 @@
 
 using AutoMapper;
 using CarCatalog.Context;
-using CarCatalog.Context.Entities;
 using Microsoft.EntityFrameworkCore;
 
 public class CarTransmissionService : ICarTransmissionService
@@ -10,13 +9,16 @@ public class CarTransmissionService : ICarTransmissionService
     private readonly IDbContextFactory<MainDbContext> contextFactory;
     private readonly IMapper mapper;
 
-    public CarTransmissionService(IDbContextFactory<MainDbContext> contextFactory, IMapper mapper)
+    public CarTransmissionService(
+        IDbContextFactory<MainDbContext> contextFactory
+        , IMapper mapper
+        )
     {
         this.contextFactory = contextFactory;
         this.mapper = mapper;
     }
 
-    public async Task<IEnumerable<CarTransmissionModel>> GetCarTransmissions(int offset = 0, int limit = 10)
+    public async Task<IEnumerable<CarTransmissionModel>> GetCarTransmissions()
     {
         using var context = await contextFactory.CreateDbContextAsync();
 
@@ -24,11 +26,6 @@ public class CarTransmissionService : ICarTransmissionService
             .CarTransmissions
             .AsQueryable()
             ;
-
-        carTransmissions = carTransmissions
-            .Skip(Math.Max(offset, 0))
-            .Take(Math.Max(0, Math.Min(limit, 100)))
-        ;
 
         var data = (await carTransmissions.ToListAsync())
             .Select(mapper.Map<CarTransmissionModel>)

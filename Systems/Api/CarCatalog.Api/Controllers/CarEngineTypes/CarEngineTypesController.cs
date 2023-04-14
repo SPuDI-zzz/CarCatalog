@@ -22,9 +22,9 @@ public class CarEngineTypesController : ControllerBase
 
     [ProducesResponseType(typeof(IEnumerable<CarEngineTypeResponse>), 200)]
     [HttpGet("")]
-    public async Task<IEnumerable<CarEngineTypeResponse>> GetCarEngineTypes([FromQuery] int offset = 0, [FromQuery] int limit = 10)
+    public async Task<IEnumerable<CarEngineTypeResponse>> GetCarEngineTypes()
     {
-        var carEngineTypes = await carEngineTypeService.GetCarEngineTypes(offset, limit);
+        var carEngineTypes = await carEngineTypeService.GetCarEngineTypes();
         var response = mapper.Map<IEnumerable<CarEngineTypeResponse>>(carEngineTypes);
 
         return response;
