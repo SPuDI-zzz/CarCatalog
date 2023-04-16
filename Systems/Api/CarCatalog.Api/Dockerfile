@@ -24,6 +24,7 @@ COPY ["Services/CarCatalog.Services.CarModel/CarCatalog.Services.CarModel.csproj
 COPY ["Services/CarCatalog.Services.CarTransmission/CarCatalog.Services.CarTransmission.csproj", "Services/CarCatalog.Services.CarTransmission/"]
 COPY ["Services/CarCatalog.Services.Comment/CarCatalog.Services.Comment.csproj", "Services/CarCatalog.Services.Comment/"]
 COPY ["Services/CarCatalog.Services.Country/CarCatalog.Services.Country.csproj", "Services/CarCatalog.Services.Country/"]
+COPY ["Services/CarCatalog.Services.RabbitMq/CarCatalog.Services.RabbitMq.csproj", "Services/CarCatalog.Services.RabbitMq/"]
 COPY ["Services/CarCatalog.Services.Settings/CarCatalog.Services.Settings.csproj", "Services/CarCatalog.Services.Settings/"]
 COPY ["Services/CarCatalog.Services.UserAccount/CarCatalog.Services.UserAccount.csproj", "Services/CarCatalog.Services.UserAccount/"]
 COPY ["Systems/Api/CarCatalog.Api.Settings/CarCatalog.Api.Settings.csproj", "Systems/Api/CarCatalog.Api.Settings/"]

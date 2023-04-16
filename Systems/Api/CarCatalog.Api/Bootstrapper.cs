@@ -12,6 +12,7 @@ using CarCatalog.Services.CarMark;
 using CarCatalog.Services.CarModel;
 using CarCatalog.Services.CarTransmission;
 using CarCatalog.Services.Country;
+using CarCatalog.Services.RabbitMq;
 using CarCatalog.Services.Settings;
 using CarCatalog.Services.UserAccount;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +38,7 @@ public static class Bootstrapper
             .AddCarTransmissionService()
             .AddUserAccountService()
             .AddCache()
+            .AddRabbitMq()
             ;
 
         return services;
