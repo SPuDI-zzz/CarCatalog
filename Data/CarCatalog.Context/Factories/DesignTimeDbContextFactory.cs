@@ -10,7 +10,7 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<MainDbCont
 
     public MainDbContext CreateDbContext(string[] args)
     {
-        var provider = (args?[0] ?? "PostgreSQL").ToLower();
+        var provider = (args.Length > 0 ? args[0] : "PostgreSQL").ToLower();
 
         var configuration = new ConfigurationBuilder()
              .AddJsonFile("appsettings.context.json")
