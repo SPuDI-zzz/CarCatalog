@@ -17,5 +17,5 @@ public class User : IdentityUser<int>
 
     public virtual ICollection<Comment> Comments { get; set; }
 
-    public virtual ICollection<CarForSale> CarForSales { get; set; }
+    public virtual ICollection<Favorite> Favorites { get; set; }
 }

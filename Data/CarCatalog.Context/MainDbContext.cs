@@ -21,6 +21,7 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
     public DbSet<UserRole> UserRoles { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<CarForSale> CarsForSale { get; set; }
+    public DbSet<Favorite> Favorites { get; set; }
 
     public MainDbContext(DbContextOptions<MainDbContext> options) : base(options) { }
 
@@ -124,10 +125,18 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
             .WithMany(x => x.CarForSales)
             .HasForeignKey(x => x.IdCarConfiguration);
 
-        modelBuilder.Entity<CarForSale>()
-            .HasMany(x => x.Users)
-            .WithMany(x => x.CarForSales)
-            .UsingEntity(t => t.ToTable("favorites"));
+        modelBuilder.Entity<Favorite>()
+            .ToTable("favorites");
+
+        modelBuilder.Entity<Favorite>()
+            .HasOne(x => x.CarForSale)
+            .WithMany(x => x.Favorites)
+            .HasForeignKey(x => x.IdCarForSale);
+
+        modelBuilder.Entity<Favorite>()
+            .HasOne(x => x.User)
+            .WithMany(x => x.Favorites)
+            .HasForeignKey(x => x.IdCarForSale);
 
         modelBuilder.Entity<Comment>()
             .ToTable("comments");

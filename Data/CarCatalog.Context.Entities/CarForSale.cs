@@ -13,7 +13,7 @@ public class CarForSale : BaseEntity
     public int? IdCarConfiguration { get; set; }
     public virtual CarConfiguration CarConfiguration { get; set; }
 
-    public virtual ICollection<User> Users { get; set; }
+    public virtual ICollection<Favorite> Favorites { get; set; }
 
     public virtual ICollection<Comment> Comments { get; set; }
 }
