@@ -40,6 +40,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Data\CarCatalog.Context\CarCatalog.Context.csproj" />
     <ProjectReference Include="..\..\..\Data\Migrations\CarCatalog.Context.MigrationsPostgreSQL\CarCatalog.Context.MigrationsPostgreSQL.csproj" />
+    <ProjectReference Include="..\..\..\Services\CarCatalog.Services.Actions\CarCatalog.Services.Actions.csproj" />
     <ProjectReference Include="..\..\..\Services\CarCatalog.Services.Cache\CarCatalog.Services.Cache.csproj" />
     <ProjectReference Include="..\..\..\Services\CarCatalog.Services.CarBodyType\CarCatalog.Services.CarBodyType.csproj" />
     <ProjectReference Include="..\..\..\Services\CarCatalog.Services.CarConfiguration\CarCatalog.Services.CarConfiguration.csproj" />

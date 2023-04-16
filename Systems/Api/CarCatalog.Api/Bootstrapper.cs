@@ -1,6 +1,7 @@
 ﻿namespace CarCatalog.Api;
 
 using CarCatalog.Api.Settings;
+using CarCatalog.Services.Actions;
 using CarCatalog.Services.Cache;
 using CarCatalog.Services.CarBodyType;
 using CarCatalog.Services.CarConfiguration;
@@ -39,6 +40,7 @@ public static class Bootstrapper
             .AddUserAccountService()
             .AddCache()
             .AddRabbitMq()
+            .AddActions()
             ;
 
         return services;
