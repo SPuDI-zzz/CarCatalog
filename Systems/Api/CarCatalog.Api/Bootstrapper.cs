@@ -1,6 +1,7 @@
 ﻿namespace CarCatalog.Api;
 
 using CarCatalog.Api.Settings;
+using CarCatalog.Services.Cache;
 using CarCatalog.Services.CarBodyType;
 using CarCatalog.Services.CarConfiguration;
 using CarCatalog.Services.CarDriveType;
@@ -35,6 +36,7 @@ public static class Bootstrapper
             .AddCarModelService()
             .AddCarTransmissionService()
             .AddUserAccountService()
+            .AddCache()
             ;
 
         return services;
