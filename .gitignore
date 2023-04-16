@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /Systems/Api/CarCatalog.Api/api.xml
 /Systems/Api/CarCatalog.Api/libman.json
+/rabbitmq
