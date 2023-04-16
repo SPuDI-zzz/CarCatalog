@@ -71,6 +71,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Services.EmailSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Consts", "Shared\CarCatalog.Consts\CarCatalog.Consts.csproj", "{EBA82292-4C00-4A96-889E-AD16DA1D9790}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workers", "Workers", "{CC1E207A-494C-40B6-8D27-1E6061437185}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Worker", "Systems\Workers\CarCatalog.Worker\CarCatalog.Worker.csproj", "{38FDB609-CA26-4543-83CE-571A33AFB7BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -185,6 +189,10 @@ Global
 		{EBA82292-4C00-4A96-889E-AD16DA1D9790}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBA82292-4C00-4A96-889E-AD16DA1D9790}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBA82292-4C00-4A96-889E-AD16DA1D9790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38FDB609-CA26-4543-83CE-571A33AFB7BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38FDB609-CA26-4543-83CE-571A33AFB7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38FDB609-CA26-4543-83CE-571A33AFB7BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38FDB609-CA26-4543-83CE-571A33AFB7BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -219,6 +227,8 @@ Global
 		{BCBE7A52-2E17-47C7-80FE-FDC3FA59796C} = {465E7BA6-7E1B-4D35-B78B-427E279B323D}
 		{BDE8775B-0D7D-47F9-B258-D50F045CF0BB} = {465E7BA6-7E1B-4D35-B78B-427E279B323D}
 		{EBA82292-4C00-4A96-889E-AD16DA1D9790} = {F57E4F9D-89AE-43A9-ABD6-392E89261E2E}
+		{CC1E207A-494C-40B6-8D27-1E6061437185} = {54A86DD3-1C05-4EB6-8AD4-ECD0603AAC5B}
+		{38FDB609-CA26-4543-83CE-571A33AFB7BC} = {CC1E207A-494C-40B6-8D27-1E6061437185}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48E3F2FE-4236-4A16-A49B-35EF14A0F690}
