@@ -51,6 +51,18 @@ services:
     env_file:
       - env.identity
 
+  carcatalog.worker_1:
+    networks:
+      - shared.carcatalog.net
+    env_file:
+      - env.worker
+
+  carcatalog.worker_2:
+    networks:
+      - shared.carcatalog.net
+    env_file:
+      - env.worker
+
 networks:
   shared.carcatalog.net:
     name: car_catalog_net

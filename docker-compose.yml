@@ -29,3 +29,25 @@ services:
       - carcatalog.postgresql
       - carcatalog.redis
       - carcatalog.api
+
+  carcatalog.worker_1:
+    image: ${DOCKER_REGISTRY-}carcatalogworker
+    build:
+      context: .
+      dockerfile: Systems/Workers/CarCatalog.Worker/Dockerfile
+    depends_on:
+      - carcatalog.postgresql
+      - carcatalog.redis
+      - carcatalog.rabbitmq
+      - carcatalog.api
+
+  carcatalog.worker_2:
+    image: ${DOCKER_REGISTRY-}carcatalogworker
+    build:
+      context: .
+      dockerfile: Systems/Workers/CarCatalog.Worker/Dockerfile
+    depends_on:
+      - carcatalog.postgresql
+      - carcatalog.redis
+      - carcatalog.rabbitmq
+      - carcatalog.api
