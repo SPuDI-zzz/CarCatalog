@@ -1,0 +1,20 @@
+﻿namespace CarCatalog.Services.EmailSender;
+
+using Microsoft.Extensions.Logging;
+
+public class EmailSender : IEmailSender
+{
+    public ILogger<EmailSender> logger { get; }
+
+    public EmailSender(ILogger<EmailSender> logger)
+    {
+        this.logger = logger;
+    }
+    public async Task Send(EmailModel model)
+    {
+        // TODO : add send email
+        await Task.Delay(1000);
+
+        logger.LogDebug($"Email sended: {model.Email} {model.Subject} {model.Message}");
+    }
+}
