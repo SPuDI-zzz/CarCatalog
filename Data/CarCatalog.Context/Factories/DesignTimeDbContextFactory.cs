@@ -10,27 +10,18 @@ public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<MainDbCont
 
     public MainDbContext CreateDbContext(string[] args)
     {
-        var provider = (args.Length > 0 ? args[0] : "PostgreSQL").ToLower();
-
         var configuration = new ConfigurationBuilder()
              .AddJsonFile("appsettings.context.json")
              .Build();
 
         DbContextOptions<MainDbContext> options;
-        if (provider.Equals("PostgreSQL".ToLower()))
-        {
-            options = new DbContextOptionsBuilder<MainDbContext>()
-                    .UseNpgsql(
-                        configuration.GetConnectionString(provider),
-                        opts => opts
-                            .MigrationsAssembly($"{migrationProjctPrefix}PostgreSQL")
-                    )
-                    .Options;
-        }
-        else
-        {
-            throw new Exception($"Unsupported provider: {provider}");
-        }
+        options = new DbContextOptionsBuilder<MainDbContext>()
+                .UseNpgsql(
+                    configuration.GetConnectionString("postgresql"),
+                    opts => opts
+                        .MigrationsAssembly($"{migrationProjctPrefix}PostgreSQL")
+                )
+                .Options;
 
         var dbf = new DbContextFactory(options);
         return dbf.Create();
