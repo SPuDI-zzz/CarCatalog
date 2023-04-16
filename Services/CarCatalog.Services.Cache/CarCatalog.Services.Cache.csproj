@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.6.104" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\CarCatalog.Common\CarCatalog.Common.csproj" />
+    <ProjectReference Include="..\..\Shared\CarCatalog.Settings\CarCatalog.Settings.csproj" />
+  </ItemGroup>
+
 </Project>
