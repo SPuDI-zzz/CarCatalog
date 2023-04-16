@@ -8,6 +8,9 @@ services:
   carcatalog.redis:
     image: redis
 
+  carcatalog.rabbitmq:
+    image: rabbitmq:management
+
   carcatalog.api:
     image: ${DOCKER_REGISTRY-}carcatalogapi
     build:

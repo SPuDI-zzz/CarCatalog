@@ -25,6 +25,16 @@ services:
     volumes:      
       - ~/.docker-conf/redis/data/:/data
 
+  carcatalog.rabbitmq:
+    ports:
+      - "5672:5672"
+      - "5673:5673"
+      - "15672:15672" 
+    networks:
+      - shared.carcatalog.net
+    volumes:      
+      - ./rabbitmq:/var/lib/rabbitmq
+
   carcatalog.api:
     ports:
       - "10000:80"
