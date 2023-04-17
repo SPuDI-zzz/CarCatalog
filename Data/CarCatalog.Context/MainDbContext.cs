@@ -53,44 +53,156 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
         modelBuilder.Entity<Country>()
             .ToTable("countries");
 
+        modelBuilder.Entity<Country>()
+            .Property(x => x.Name)
+            .IsRequired();
+
+        modelBuilder.Entity<Country>()
+            .Property(x => x.Name)
+            .HasMaxLength(50);
+
         modelBuilder.Entity<CarMark>()
             .ToTable("car_marks");
+
+        modelBuilder.Entity<CarMark>()
+            .Property(x => x.Name)
+            .IsRequired();
+
+        modelBuilder.Entity<CarMark>()
+            .Property(x => x.Name)
+            .HasMaxLength(50);
 
         modelBuilder.Entity<CarMark>()
             .HasOne(x => x.Country)
             .WithMany(x => x.CarMarks)
             .HasForeignKey(x => x.IdCountry);
 
+        modelBuilder.Entity<CarMark>()
+            .Property(x => x.IdCountry)
+            .IsRequired();
+
         modelBuilder.Entity<CarModel>()
             .ToTable("car_models");
+
+        modelBuilder.Entity<CarModel>()
+            .Property(x => x.Name)
+            .IsRequired();
+
+        modelBuilder.Entity<CarModel>()
+            .Property(x => x.Name)
+            .HasMaxLength(50);
+
+        modelBuilder.Entity<CarModel>()
+            .Property(x => x.Class)
+            .IsRequired();
+
+        modelBuilder.Entity<CarModel>()
+            .Property(x => x.Class)
+            .HasMaxLength(1);
 
         modelBuilder.Entity<CarModel>()
             .HasOne(x => x.CarMark)
             .WithMany(x => x.CarModels)
             .HasForeignKey(x => x.IdCarMark);
 
+        modelBuilder.Entity<CarModel>()
+            .Property(x => x.IdCarMark)
+            .IsRequired();
+
         modelBuilder.Entity<CarGeneration>()
             .ToTable("car_generations");
+
+        modelBuilder.Entity<CarGeneration>()
+            .Property(x => x.Name)
+            .IsRequired();
+
+        modelBuilder.Entity<CarGeneration>()
+            .Property(x => x.Name)
+            .HasMaxLength(100);
+
+        modelBuilder.Entity<CarGeneration>()
+            .Property(x => x.YearBegin)
+            .IsRequired();
+
+        modelBuilder.Entity<CarGeneration>()
+            .ToTable(t => t.HasCheckConstraint("'YearBegin'", "'YearBegin' >= 1900 AND 'YearBegin' <= EXTRACT('Year' FROM CURRENT_DATE)")
+                .HasName("'CK_CarGeneration_YearBegin'"));
+
+        modelBuilder.Entity<CarGeneration>()
+            .ToTable(t => t.HasCheckConstraint("'YearEnd'", "'YearEnd' >= 'YearBegin' AND 'YearEnd' <= EXTRACT('Year' FROM CURRENT_DATE)")
+                .HasName("'CK_CarGeneration_YearEnd'"));
+
+        modelBuilder.Entity<CarGeneration>()
+            .Property(x => x.YearEnd)
+            .IsRequired(false);
 
         modelBuilder.Entity<CarGeneration>()
             .HasOne(x => x.CarModel)
             .WithMany(x => x.CarGenerations)
             .HasForeignKey(x => x.IDCarModel);
 
+        modelBuilder.Entity<CarGeneration>()
+            .Property(x => x.IDCarModel)
+            .IsRequired();
+
         modelBuilder.Entity<CarBodyType>()
             .ToTable("car_body_types");
+
+        modelBuilder.Entity<CarBodyType>()
+            .Property(x => x.Name)
+            .IsRequired();
+
+        modelBuilder.Entity<CarBodyType>()
+            .Property(x => x.Name)
+            .HasMaxLength(25);
 
         modelBuilder.Entity<CarDriveType>()
             .ToTable("car_drive_types");
 
+        modelBuilder.Entity<CarDriveType>()
+            .Property(x => x.Name)
+            .IsRequired();
+
+        modelBuilder.Entity<CarDriveType>()
+            .Property(x => x.Name)
+            .HasMaxLength(25);
+
         modelBuilder.Entity<CarEngineType>()
             .ToTable("car_engine_types");
+
+        modelBuilder.Entity<CarEngineType>()
+            .Property(x => x.Name)
+            .IsRequired();
+
+        modelBuilder.Entity<CarEngineType>()
+            .Property(x => x.Name)
+            .HasMaxLength(25);
 
         modelBuilder.Entity<CarTransmission>()
             .ToTable("car_transmissions");
 
+        modelBuilder.Entity<CarTransmission>()
+            .Property(x => x.Name)
+            .IsRequired();
+
+        modelBuilder.Entity<CarTransmission>()
+            .Property(x => x.Name)
+            .HasMaxLength(25);
+
         modelBuilder.Entity<CarConfiguration>()
             .ToTable("car_configurations");
+
+        modelBuilder.Entity<CarConfiguration>()
+            .ToTable(t => t.HasCheckConstraint("'Trunk'", "'Trunk' >= 0")
+            .HasName("'CK_CarConfiguration_Trunk'"));
+
+        modelBuilder.Entity<CarConfiguration>()
+            .ToTable(t => t.HasCheckConstraint("'HorsePower'", "'HorsePower' >= 0")
+            .HasName("'CK_CarConfiguration_HorsePower'"));
+
+        modelBuilder.Entity<CarConfiguration>()
+            .ToTable(t => t.HasCheckConstraint("'EngineCapasity'", "'EngineCapasity' >= 0")
+            .HasName("'CK_CarConfiguration_EngineCapasity'"));
 
         modelBuilder.Entity<CarConfiguration>()
             .HasOne(x => x.CarGeneration)
@@ -117,13 +229,53 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
             .WithMany(x => x.CarConfigurations)
             .HasForeignKey(x => x.IdCarTransmission);
 
+        modelBuilder.Entity<CarConfiguration>()
+            .Property(x => x.IdCarBodyType)
+            .IsRequired();
+
+        modelBuilder.Entity<CarConfiguration>()
+            .Property(x => x.IdCarTransmission)
+            .IsRequired();
+
+        modelBuilder.Entity<CarConfiguration>()
+            .Property(x => x.IdCarDriveType)
+            .IsRequired();
+
+        modelBuilder.Entity<CarConfiguration>()
+            .Property(x => x.IdCarEgineType)
+            .IsRequired();
+
+        modelBuilder.Entity<CarConfiguration>()
+            .Property(x => x.IdCarGeneration)
+            .IsRequired();
+
+        modelBuilder.Entity<CarConfiguration>()
+            .Property(x => x.IdCarTransmission)
+            .IsRequired();
+
         modelBuilder.Entity<CarForSale>()
             .ToTable("car_for_sales");
+
+        modelBuilder.Entity<CarForSale>()
+            .ToTable(t => t.HasCheckConstraint("'Price'", "'Price' >= 0")
+            .HasName("'CK_CarForSale_Price'"));
+
+        modelBuilder.Entity<CarForSale>()
+            .ToTable(t => t.HasCheckConstraint("'Mileage'", "'Mileage' >= 0")
+            .HasName("'CK_CarForSale_Mileage'"));
+
+        modelBuilder.Entity<CarForSale>()
+            .Property(x => x.Color)
+            .HasMaxLength(50);
 
         modelBuilder.Entity<CarForSale>()
             .HasOne(x => x.CarConfiguration)
             .WithMany(x => x.CarForSales)
             .HasForeignKey(x => x.IdCarConfiguration);
+
+        modelBuilder.Entity<CarForSale>()
+            .Property(x => x.IdCarConfiguration)
+            .IsRequired();
 
         modelBuilder.Entity<Favorite>()
             .ToTable("favorites");
@@ -138,6 +290,14 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
             .WithMany(x => x.Favorites)
             .HasForeignKey(x => x.IdCarForSale);
 
+        modelBuilder.Entity<Favorite>()
+            .Property(x => x.IdCarForSale)
+            .IsRequired();
+
+        modelBuilder.Entity<Favorite>()
+            .Property(x => x.IdUser)
+            .IsRequired();
+
         modelBuilder.Entity<Comment>()
             .ToTable("comments");
 
@@ -150,5 +310,13 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
             .HasOne(x => x.User)
             .WithMany(x => x.Comments)
             .HasForeignKey(x => x.IdUser);
+
+        modelBuilder.Entity<Comment>()
+            .Property(x => x.IdUser)
+            .IsRequired();
+
+        modelBuilder.Entity<Comment>()
+            .Property(x => x.IdCarForSale)
+            .IsRequired();
     }
 }

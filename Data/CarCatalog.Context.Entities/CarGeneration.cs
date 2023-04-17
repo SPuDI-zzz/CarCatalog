@@ -6,7 +6,7 @@ public class CarGeneration : BaseEntity
 
     public int YearBegin { get; set; }
 
-    public int YearEnd { get; set; }
+    public int? YearEnd { get; set; }
 
     public int? IDCarModel { get; set; }
     public virtual CarModel CarModel { get; set; }
