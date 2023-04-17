@@ -34,19 +34,19 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
 
         modelBuilder.Entity<UserRole>()
             .ToTable("user_roles");
-        
+
         modelBuilder.Entity<IdentityUserToken<int>>()
             .ToTable("user_tokens");
-        
+
         modelBuilder.Entity<IdentityUserRole<int>>()
             .ToTable("user_role_owners");
-        
+
         modelBuilder.Entity<IdentityRoleClaim<int>>()
             .ToTable("user_role_claims");
-        
+
         modelBuilder.Entity<IdentityUserLogin<int>>()
             .ToTable("user_logins");
-        
+
         modelBuilder.Entity<IdentityUserClaim<int>>()
             .ToTable("user_claims");
 
@@ -125,6 +125,14 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
             .IsRequired();
 
         modelBuilder.Entity<CarGeneration>()
+            .ToTable(t => t.HasCheckConstraint("\"YearBegin\"", "\"YearBegin\" >= 1900 AND \"YearBegin\" <= EXTRACT(Year FROM CURRENT_DATE)")
+                .HasName("\"CK_CarGeneration_YearBegin\""));
+
+        modelBuilder.Entity<CarGeneration>()
+            .ToTable(t => t.HasCheckConstraint("\"YearEnd\"", "\"YearEnd\" >= \"YearBegin\" AND \"YearEnd\" <= EXTRACT(Year FROM CURRENT_DATE)")
+                .HasName("\"CK_CarGeneration_YearEnd\""));
+
+        modelBuilder.Entity<CarGeneration>()
             .Property(x => x.YearEnd)
             .IsRequired(false);
 
@@ -185,6 +193,18 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
             .ToTable("car_configurations");
 
         modelBuilder.Entity<CarConfiguration>()
+            .ToTable(t => t.HasCheckConstraint("\"Trunk\"", "\"Trunk\" >= 0")
+            .HasName("\"CK_CarConfiguration_Trunk\""));
+
+        modelBuilder.Entity<CarConfiguration>()
+            .ToTable(t => t.HasCheckConstraint("\"HorsePower\"", "\"HorsePower\" >= 0")
+            .HasName("\"CK_CarConfiguration_HorsePower\""));
+
+        modelBuilder.Entity<CarConfiguration>()
+            .ToTable(t => t.HasCheckConstraint("\"EngineCapasity\"", "\"EngineCapasity\" >= 0")
+            .HasName("\"CK_CarConfiguration_EngineCapasity\""));
+
+        modelBuilder.Entity<CarConfiguration>()
             .HasOne(x => x.CarGeneration)
             .WithMany(x => x.CarConfigurations)
             .HasForeignKey(x => x.IdCarGeneration);
@@ -235,6 +255,14 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
 
         modelBuilder.Entity<CarForSale>()
             .ToTable("car_for_sales");
+
+        modelBuilder.Entity<CarForSale>()
+            .ToTable(t => t.HasCheckConstraint("\"Price\"", "\"Price\" >= 0")
+            .HasName("\"CK_CarForSale_Price\""));
+
+        modelBuilder.Entity<CarForSale>()
+            .ToTable(t => t.HasCheckConstraint("\"Mileage\"", "\"Mileage\" >= 0")
+            .HasName("\"CK_CarForSale_Mileage\""));
 
         modelBuilder.Entity<CarForSale>()
             .Property(x => x.Color)
