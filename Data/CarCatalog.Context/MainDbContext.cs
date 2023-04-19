@@ -281,6 +281,10 @@ public class MainDbContext : IdentityDbContext<User, UserRole, int>
             .ToTable("favorites");
 
         modelBuilder.Entity<Favorite>()
+            .HasKey(u => new { u.IdCarForSale, u.IdUser })
+            .HasName("PK_favorites");
+
+        modelBuilder.Entity<Favorite>()
             .HasOne(x => x.CarForSale)
             .WithMany(x => x.Favorites)
             .HasForeignKey(x => x.IdCarForSale);
