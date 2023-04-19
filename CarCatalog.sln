@@ -61,19 +61,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Identity", "Syst
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Services.UserAccount", "Services\CarCatalog.Services.UserAccount\CarCatalog.Services.UserAccount.csproj", "{B83E64ED-1B02-4B73-992E-B3BBA64A296F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Services.Cache", "Services\CarCatalog.Services.Cache\CarCatalog.Services.Cache.csproj", "{CDDDE1CC-6C23-48CF-AA4E-E9C59C36C193}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Services.Cache", "Services\CarCatalog.Services.Cache\CarCatalog.Services.Cache.csproj", "{CDDDE1CC-6C23-48CF-AA4E-E9C59C36C193}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Services.RabbitMq", "Services\CarCatalog.Services.RabbitMq\CarCatalog.Services.RabbitMq.csproj", "{6500D13A-5C64-4238-8A23-B4611C210E2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Services.RabbitMq", "Services\CarCatalog.Services.RabbitMq\CarCatalog.Services.RabbitMq.csproj", "{6500D13A-5C64-4238-8A23-B4611C210E2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Services.Actions", "Services\CarCatalog.Services.Actions\CarCatalog.Services.Actions.csproj", "{BCBE7A52-2E17-47C7-80FE-FDC3FA59796C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Services.Actions", "Services\CarCatalog.Services.Actions\CarCatalog.Services.Actions.csproj", "{BCBE7A52-2E17-47C7-80FE-FDC3FA59796C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Services.EmailSender", "Services\CarCatalog.Services.EmailSender\CarCatalog.Services.EmailSender.csproj", "{BDE8775B-0D7D-47F9-B258-D50F045CF0BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Services.EmailSender", "Services\CarCatalog.Services.EmailSender\CarCatalog.Services.EmailSender.csproj", "{BDE8775B-0D7D-47F9-B258-D50F045CF0BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Consts", "Shared\CarCatalog.Consts\CarCatalog.Consts.csproj", "{EBA82292-4C00-4A96-889E-AD16DA1D9790}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Consts", "Shared\CarCatalog.Consts\CarCatalog.Consts.csproj", "{EBA82292-4C00-4A96-889E-AD16DA1D9790}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workers", "Workers", "{CC1E207A-494C-40B6-8D27-1E6061437185}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Worker", "Systems\Workers\CarCatalog.Worker\CarCatalog.Worker.csproj", "{38FDB609-CA26-4543-83CE-571A33AFB7BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Worker", "Systems\Workers\CarCatalog.Worker\CarCatalog.Worker.csproj", "{38FDB609-CA26-4543-83CE-571A33AFB7BC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{4463E3B6-3E64-4B3B-820C-C56B92840471}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Web", "Systems\Web\CarCatalog.Web\CarCatalog.Web.csproj", "{A38D959D-BBF8-4AFC-B9F8-204185BA9D31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -193,6 +197,10 @@ Global
 		{38FDB609-CA26-4543-83CE-571A33AFB7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38FDB609-CA26-4543-83CE-571A33AFB7BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38FDB609-CA26-4543-83CE-571A33AFB7BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A38D959D-BBF8-4AFC-B9F8-204185BA9D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A38D959D-BBF8-4AFC-B9F8-204185BA9D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A38D959D-BBF8-4AFC-B9F8-204185BA9D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A38D959D-BBF8-4AFC-B9F8-204185BA9D31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -229,6 +237,8 @@ Global
 		{EBA82292-4C00-4A96-889E-AD16DA1D9790} = {F57E4F9D-89AE-43A9-ABD6-392E89261E2E}
 		{CC1E207A-494C-40B6-8D27-1E6061437185} = {54A86DD3-1C05-4EB6-8AD4-ECD0603AAC5B}
 		{38FDB609-CA26-4543-83CE-571A33AFB7BC} = {CC1E207A-494C-40B6-8D27-1E6061437185}
+		{4463E3B6-3E64-4B3B-820C-C56B92840471} = {54A86DD3-1C05-4EB6-8AD4-ECD0603AAC5B}
+		{A38D959D-BBF8-4AFC-B9F8-204185BA9D31} = {4463E3B6-3E64-4B3B-820C-C56B92840471}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {48E3F2FE-4236-4A16-A49B-35EF14A0F690}
