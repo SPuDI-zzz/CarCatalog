@@ -48,6 +48,7 @@
     <ProjectReference Include="..\..\..\Services\CarCatalog.Services.CarConfiguration\CarCatalog.Services.CarConfiguration.csproj" />
     <ProjectReference Include="..\..\..\Services\CarCatalog.Services.CarDriveType\CarCatalog.Services.CarDriveType.csproj" />
     <ProjectReference Include="..\..\..\Services\CarCatalog.Services.CarEngineType\CarCatalog.Services.CarEngineType.csproj" />
+    <ProjectReference Include="..\..\..\Services\CarCatalog.Services.CarFilter\CarCatalog.Services.CarFilter.csproj" />
     <ProjectReference Include="..\..\..\Services\CarCatalog.Services.CarForSale\CarCatalog.Services.CarForSale.csproj" />
     <ProjectReference Include="..\..\..\Services\CarCatalog.Services.CarGeneration\CarCatalog.Services.CarGeneration.csproj" />
     <ProjectReference Include="..\..\..\Services\CarCatalog.Services.CarMark\CarCatalog.Services.CarMark.csproj" />

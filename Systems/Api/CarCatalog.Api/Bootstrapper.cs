@@ -7,6 +7,7 @@ using CarCatalog.Services.CarBodyType;
 using CarCatalog.Services.CarConfiguration;
 using CarCatalog.Services.CarDriveType;
 using CarCatalog.Services.CarEngineType;
+using CarCatalog.Services.CarFilter;
 using CarCatalog.Services.CarForSale;
 using CarCatalog.Services.CarGeneration;
 using CarCatalog.Services.CarMark;
@@ -38,6 +39,7 @@ public static class Bootstrapper
             .AddCarModelService()
             .AddCarTransmissionService()
             .AddUserAccountService()
+            .AddCarFilterService()
             .AddCache()
             .AddRabbitMq()
             .AddActions()
