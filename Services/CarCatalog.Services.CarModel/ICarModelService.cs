@@ -4,4 +4,7 @@ public interface ICarModelService
 {
     Task<IEnumerable<CarModelModel>> GetCarModels(GetCarModelsModel model);
     Task<CarModelModel> GetCarModel(int carModelId);
+    Task<CarModelModel> AddCarModel(AddCarModelModel model);
+    Task UpdateCarModel(int carModelId, UpdateCarModelModel model);
+    Task DeleteCarModel(int carModelId);
 }

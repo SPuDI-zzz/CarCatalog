@@ -2,7 +2,9 @@
 
 using AutoMapper;
 using CarCatalog.Api.Controllers.CarConfigurations.Models;
+using CarCatalog.Common.Security;
 using CarCatalog.Services.CarConfiguration;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [Produces("application/json")]
@@ -38,5 +40,35 @@ public class CarConfigurationsController : ControllerBase
         var response = mapper.Map<CarConfigurationResponse>(carConfiguration);
 
         return response;
+    }
+
+    [HttpPost("")]
+    [Authorize(Policy = AppScopes.CarsWrite)]
+    public async Task<CarConfigurationResponse> AddCarConfiguration([FromBody] AddCarConfigurationRequest request)
+    {
+        var model = mapper.Map<AddCarConfigurationModel>(request);
+        var carMark = await carConfigurationService.AddCarConfiguration(model);
+        var response = mapper.Map<CarConfigurationResponse>(carMark);
+
+        return response;
+    }
+
+    [HttpPut("{id}")]
+    [Authorize(Policy = AppScopes.CarsWrite)]
+    public async Task<IActionResult> UpdateCarConfiguration([FromRoute] int id, [FromBody] UpdateCarConfigurationRequest request)
+    {
+        var model = mapper.Map<UpdateCarConfigurationModel>(request);
+        await carConfigurationService.UpdateCarConfiguration(id, model);
+
+        return Ok();
+    }
+
+    [HttpDelete("{id}")]
+    [Authorize(Policy = AppScopes.CarsWrite)]
+    public async Task<IActionResult> DeleteCarConfiguration([FromRoute] int id)
+    {
+        await carConfigurationService.DeleteCarConfiguration(id);
+
+        return Ok();
     }
 }

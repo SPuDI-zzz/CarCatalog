@@ -15,14 +15,14 @@ public class GetCarConfigurationsModelValidator : AbstractValidator<GetCarConfig
     {
         RuleFor(x => x.Offset)
             .GreaterThanOrEqualTo(0)
-            .WithMessage("Offset must be greater than or equal 0")
+            .WithMessage("Offset must be greater than or equal 0.")
             ;
 
         RuleFor(x => x.Limit)
             .GreaterThanOrEqualTo(0)
-            .WithMessage("Limit must be greater than or equal 0")
-            .LessThanOrEqualTo(20)
-            .WithMessage("Limit must be less than or equal 100")
+            .WithMessage("Limit must be greater than or equal 0.")
+            .LessThanOrEqualTo(100)
+            .WithMessage("Limit must be less than or equal 100.")
             ;
     }
 }

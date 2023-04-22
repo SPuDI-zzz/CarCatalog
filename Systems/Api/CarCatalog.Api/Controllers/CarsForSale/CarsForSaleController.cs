@@ -2,7 +2,9 @@
 
 using AutoMapper;
 using CarCatalog.Api.Controllers.CarsForSale.Models;
+using CarCatalog.Common.Security;
 using CarCatalog.Services.CarForSale;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [Produces("application/json")]
@@ -38,5 +40,35 @@ public class CarsForSaleController : ControllerBase
         var response = mapper.Map<CarForSaleResponse>(carForSale);
 
         return response;
+    }
+
+    [HttpPost("")]
+    [Authorize(Policy = AppScopes.CarsWrite)]
+    public async Task<CarForSaleResponse> AddCarForSale([FromBody] AddCarForSaleRequest request)
+    {
+        var model = mapper.Map<AddCarForSaleModel>(request);
+        var carMark = await carForSaleService.AddCarForSale(model);
+        var response = mapper.Map<CarForSaleResponse>(carMark);
+
+        return response;
+    }
+
+    [HttpPut("{id}")]
+    [Authorize(Policy = AppScopes.CarsWrite)]
+    public async Task<IActionResult> UpdateCarForSale([FromRoute] int id, [FromBody] UpdateCarForSaleRequest request)
+    {
+        var model = mapper.Map<UpdateCarForSaleModel>(request);
+        await carForSaleService.UpdateCarForSale(id, model);
+
+        return Ok();
+    }
+
+    [HttpDelete("{id}")]
+    [Authorize(Policy = AppScopes.CarsWrite)]
+    public async Task<IActionResult> DeleteCarForSale([FromRoute] int id)
+    {
+        await carForSaleService.DeleteCarForSale(id);
+
+        return Ok();
     }
 }

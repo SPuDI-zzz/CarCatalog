@@ -2,7 +2,9 @@
 
 using AutoMapper;
 using CarCatalog.Api.Controllers.CarGenerations.Models;
+using CarCatalog.Common.Security;
 using CarCatalog.Services.CarGeneration;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [Produces("application/json")]
@@ -38,5 +40,35 @@ public class CarGenerationsController : ControllerBase
         var response = mapper.Map<CarGenerationResponse>(carGeneration);
 
         return response;
+    }
+
+    [HttpPost("")]
+    [Authorize(Policy = AppScopes.CarsWrite)]
+    public async Task<CarGenerationResponse> AddCarGeneration([FromBody] AddCarGenerationRequest request)
+    {
+        var model = mapper.Map<AddCarGenerationModel>(request);
+        var carMark = await carGenerationService.AddCarGeneration(model);
+        var response = mapper.Map<CarGenerationResponse>(carMark);
+
+        return response;
+    }
+
+    [HttpPut("{id}")]
+    [Authorize(Policy = AppScopes.CarsWrite)]
+    public async Task<IActionResult> UpdateCarGeneration([FromRoute] int id, [FromBody] UpdateCarGenerationRequest request)
+    {
+        var model = mapper.Map<UpdateCarGenerationModel>(request);
+        await carGenerationService.UpdateCarGeneration(id, model);
+
+        return Ok();
+    }
+
+    [HttpDelete("{id}")]
+    [Authorize(Policy = AppScopes.CarsWrite)]
+    public async Task<IActionResult> DeleteCarGeneration([FromRoute] int id)
+    {
+        await carGenerationService.DeleteCarGeneration(id);
+
+        return Ok();
     }
 }

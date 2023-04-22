@@ -12,20 +12,20 @@ public class CarConfigurationRequest
 
 public class CarConfigurationRequestValidator : AbstractValidator<CarConfigurationRequest>
 {
-public CarConfigurationRequestValidator()
-{
-    RuleFor(x => x.Offset)
-        .GreaterThanOrEqualTo(0)
-        .WithMessage("Offset must be greater than or equal 0")
-        ;
+    public CarConfigurationRequestValidator()
+    {
+        RuleFor(x => x.Offset)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("Offset must be greater than or equal 0.")
+            ;
 
-    RuleFor(x => x.Limit)
-        .GreaterThanOrEqualTo(0)
-        .WithMessage("Limit must be greater than or equal 0")
-        .LessThanOrEqualTo(20)
-        .WithMessage("Limit must be less than or equal 100")
-        ;
-}
+        RuleFor(x => x.Limit)
+            .GreaterThanOrEqualTo(0)
+            .WithMessage("Limit must be greater than or equal 0.")
+            .LessThanOrEqualTo(100)
+            .WithMessage("Limit must be less than or equal 100.")
+            ;
+    }
 }
 
 public class CarConfigurationRequestProfile : Profile
