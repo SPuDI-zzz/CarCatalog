@@ -1,10 +1,8 @@
 ﻿namespace CarCatalog.Api.Controllers.Favorites;
 
 using AutoMapper;
-using CarCatalog.Api.Controllers.CarsForSale.Models;
 using CarCatalog.Api.Controllers.Favorites.Models;
 using CarCatalog.Common.Security;
-using CarCatalog.Services.CarForSale;
 using CarCatalog.Services.Favorite;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
