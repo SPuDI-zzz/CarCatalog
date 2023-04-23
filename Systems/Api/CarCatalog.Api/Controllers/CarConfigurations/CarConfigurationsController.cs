@@ -47,8 +47,8 @@ public class CarConfigurationsController : ControllerBase
     public async Task<CarConfigurationResponse> AddCarConfiguration([FromBody] AddCarConfigurationRequest request)
     {
         var model = mapper.Map<AddCarConfigurationModel>(request);
-        var carMark = await carConfigurationService.AddCarConfiguration(model);
-        var response = mapper.Map<CarConfigurationResponse>(carMark);
+        var carConfiguration = await carConfigurationService.AddCarConfiguration(model);
+        var response = mapper.Map<CarConfigurationResponse>(carConfiguration);
 
         return response;
     }

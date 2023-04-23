@@ -47,8 +47,8 @@ public class CarsForSaleController : ControllerBase
     public async Task<CarForSaleResponse> AddCarForSale([FromBody] AddCarForSaleRequest request)
     {
         var model = mapper.Map<AddCarForSaleModel>(request);
-        var carMark = await carForSaleService.AddCarForSale(model);
-        var response = mapper.Map<CarForSaleResponse>(carMark);
+        var carForSale = await carForSaleService.AddCarForSale(model);
+        var response = mapper.Map<CarForSaleResponse>(carForSale);
 
         return response;
     }

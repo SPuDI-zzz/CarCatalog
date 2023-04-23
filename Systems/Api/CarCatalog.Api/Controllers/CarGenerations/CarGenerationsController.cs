@@ -47,8 +47,8 @@ public class CarGenerationsController : ControllerBase
     public async Task<CarGenerationResponse> AddCarGeneration([FromBody] AddCarGenerationRequest request)
     {
         var model = mapper.Map<AddCarGenerationModel>(request);
-        var carMark = await carGenerationService.AddCarGeneration(model);
-        var response = mapper.Map<CarGenerationResponse>(carMark);
+        var carGeneration = await carGenerationService.AddCarGeneration(model);
+        var response = mapper.Map<CarGenerationResponse>(carGeneration);
 
         return response;
     }
