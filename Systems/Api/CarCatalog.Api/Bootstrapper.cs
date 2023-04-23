@@ -13,6 +13,7 @@ using CarCatalog.Services.CarGeneration;
 using CarCatalog.Services.CarMark;
 using CarCatalog.Services.CarModel;
 using CarCatalog.Services.CarTransmission;
+using CarCatalog.Services.Comment;
 using CarCatalog.Services.Country;
 using CarCatalog.Services.Favorite;
 using CarCatalog.Services.RabbitMq;
@@ -42,6 +43,7 @@ public static class Bootstrapper
             .AddUserAccountService()
             .AddCarFilterService()
             .AddFavoriteService()
+            .AddCommentService()
             .AddCache()
             .AddRabbitMq()
             .AddActions()
