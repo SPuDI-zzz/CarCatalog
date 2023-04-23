@@ -30,7 +30,7 @@ public class CommentService : ICommentService
 
         var comments = context
             .Comments
-            .Where(x => x.IdUser.Equals(carForSaleId))
+            .Where(x => x.IdCarForSale.Equals(carForSaleId))
             ;
 
         var data = (await comments.ToListAsync())

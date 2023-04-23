@@ -38,7 +38,7 @@ public class AddCommentModelProfile : Profile
     public AddCommentModelProfile()
     {
         CreateMap<AddCommentModel, Comment>()
-            .ForMember(dest => dest.DateTimeAdded, opt => opt.MapFrom(x => DateTimeOffset.Now))
+            .ForMember(dest => dest.DateTimeAdded, opt => opt.MapFrom(x => DateTimeOffset.UtcNow))
             ;
     }
 }

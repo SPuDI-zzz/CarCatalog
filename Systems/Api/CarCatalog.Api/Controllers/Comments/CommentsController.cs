@@ -7,6 +7,10 @@ using CarCatalog.Services.Comment;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+[Produces("application/json")]
+[Route("api/v{version:apiVersion}/comments")]
+[ApiController]
+[ApiVersion("1.0")]
 public class CommentsController : ControllerBase
 {
     private readonly IMapper mapper;
@@ -19,8 +23,7 @@ public class CommentsController : ControllerBase
     }
 
     [ProducesResponseType(typeof(IEnumerable<CommentResponse>), 200)]
-    [HttpGet("{userId}")]
-    [Authorize(Policy = AppScopes.CommentsWrite)]
+    [HttpGet("{carForSaleId}")]
     public async Task<IEnumerable<CommentResponse>> GetCommentsByCarForSaleId([FromRoute] int carForSaleId)
     {
         var comments = await commentService.GetCommentsByCarForSaleId(carForSaleId);
@@ -31,7 +34,7 @@ public class CommentsController : ControllerBase
 
     [HttpPost("")]
     [Authorize(Policy = AppScopes.CommentsWrite)]
-    public async Task<CommentResponse> AddFavorite([FromBody] AddCommentRequest request)
+    public async Task<CommentResponse> AddComment([FromBody] AddCommentRequest request)
     {
         var model = mapper.Map<AddCommentModel>(request);
         var comment = await commentService.AddComment(model);
@@ -42,7 +45,7 @@ public class CommentsController : ControllerBase
 
     [HttpDelete("{id}")]
     [Authorize(Policy = AppScopes.CommentsWrite)]
-    public async Task<IActionResult> DeleteFavorite([FromRoute] int id)
+    public async Task<IActionResult> DeleteComment([FromRoute] int id)
     {
         await commentService.DeleteComment(id);
 
