@@ -1,6 +1,6 @@
-﻿using AutoMapper;
-namespace CarCatalog.Services.Favorite;
+﻿namespace CarCatalog.Services.Favorite;
 
+using AutoMapper;
 using CarCatalog.Common.Exceptions;
 using CarCatalog.Common.Validator;
 using CarCatalog.Context;
