@@ -28,7 +28,7 @@ public class UpdateCarModelModelValidator : AbstractValidator<UpdateCarModelMode
             ;
 
         RuleFor(x => x.IdCarMark)
-            .NotEmpty().WithMessage("Country is required.")
+            .NotEmpty().WithMessage("IdCarMark is required.")
             ;
     }
 }
