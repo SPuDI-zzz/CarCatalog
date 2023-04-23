@@ -4,5 +4,5 @@ public interface IFavoriteService
 {
     Task<IEnumerable<FavoriteModel>> GetFavoritesByUserId(int userId);
     Task<FavoriteModel> AddFavorite(AddFavoriteModel model);
-    Task DeleteFavorite(int userId, int carForSaleId);
+    Task DeleteFavorite(DeleteFavoriteModel model);
 }

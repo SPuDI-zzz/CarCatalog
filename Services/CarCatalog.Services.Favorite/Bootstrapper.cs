@@ -1,11 +1,13 @@
 ﻿namespace CarCatalog.Services.Favorite;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
-public class Bootstrapper
+public static class Bootstrapper
 {
+    public static IServiceCollection AddFavoriteService(this IServiceCollection services)
+    {
+        services.AddSingleton<IFavoriteService, FavoriteService>();
+
+        return services;
+    }
 }

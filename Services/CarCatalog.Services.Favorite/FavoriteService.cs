@@ -53,11 +53,11 @@ public class FavoriteService : IFavoriteService
         return mapper.Map<FavoriteModel>(favorite);
     }
 
-    public async Task DeleteFavorite(int userId, int carForSaleId)
+    public async Task DeleteFavorite(DeleteFavoriteModel model)
     {
         using var context = await contextFactory.CreateDbContextAsync();
 
-        var favorite = await context.Favorites.FirstOrDefaultAsync(x => x.IdUser.Equals(userId) && x.IdCarForSale.Equals(carForSaleId))
+        var favorite = await context.Favorites.FirstOrDefaultAsync(x => x.IdUser.Equals(model.IdUser) && x.IdCarForSale.Equals(model.IdCarForSale))
             ?? throw new ProcessException("The favorite car was not found");
 
         context.Remove(favorite);
