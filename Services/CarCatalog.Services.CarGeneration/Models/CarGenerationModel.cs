@@ -16,9 +16,9 @@ public class CarGenerationModel
     public string CarModel { get; set; } = string.Empty;
 }
 
-public class CarGenerationProfile : Profile
+public class CarGenerationModelProfile : Profile
 {
-    public CarGenerationProfile()
+    public CarGenerationModelProfile()
     {
         CreateMap<CarGeneration, CarGenerationModel>()
             .ForMember(dest => dest.CarModel, opt => opt.MapFrom(src => src.CarModel.Name))

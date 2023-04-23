@@ -15,9 +15,9 @@ public class CarForSaleModel
     public int IdCarConfiguration { get; set; }
 }
 
-public class CarForSaleProfile : Profile
+public class CarForSaleModelProfile : Profile
 {
-    public CarForSaleProfile()
+    public CarForSaleModelProfile()
     {
         CreateMap<CarForSale, CarForSaleModel>();
     }

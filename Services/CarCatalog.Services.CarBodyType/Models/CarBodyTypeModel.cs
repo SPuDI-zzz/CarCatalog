@@ -9,9 +9,9 @@ public class CarBodyTypeModel
     public string Name { get; set; } = string.Empty;
 }
 
-public class CarBodyTypeProfile : Profile
+public class CarBodyTypeModelProfile : Profile
 {
-    public CarBodyTypeProfile()
+    public CarBodyTypeModelProfile()
     {
         CreateMap<CarBodyType, CarBodyTypeModel>();
     }

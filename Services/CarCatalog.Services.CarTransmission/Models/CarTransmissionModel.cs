@@ -9,9 +9,9 @@ public class CarTransmissionModel
     public string Name { get; set; } = string.Empty;
 }
 
-public class CarTransmissionProfile : Profile
+public class CarTransmissionModelProfile : Profile
 {
-    public CarTransmissionProfile()
+    public CarTransmissionModelProfile()
     {
         CreateMap<CarTransmission, CarTransmissionModel>();
     }

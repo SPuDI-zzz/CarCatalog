@@ -31,9 +31,9 @@ public class CarConfigurationModel
     public string CarGeneration { get; set; } = string.Empty;
 }
 
-public class CarConfigurationProfile : Profile
+public class CarConfigurationModelProfile : Profile
 {
-    public CarConfigurationProfile()
+    public CarConfigurationModelProfile()
     {
         CreateMap<CarConfiguration, CarConfigurationModel>()
             .ForMember(dest => dest.CarDriveType, opt => opt.MapFrom(src => src.CarDriveType.Name))

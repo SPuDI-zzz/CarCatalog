@@ -14,9 +14,9 @@ public class CarModelModel
     public string CarMark { get; set; } = string.Empty;
 }
 
-public class CarModelProfile : Profile
+public class CarModelModelProfile : Profile
 {
-    public CarModelProfile()
+    public CarModelModelProfile()
     {
         CreateMap<CarModel, CarModelModel>()
             .ForMember(dest => dest.CarMark, opt => opt.MapFrom(src => src.CarMark.Name))

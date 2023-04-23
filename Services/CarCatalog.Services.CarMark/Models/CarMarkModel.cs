@@ -13,9 +13,9 @@ public class CarMarkModel
     public string Country { get; set; } = string.Empty;
 }
 
-public class CarMarkProfile : Profile
+public class CarMarkModelProfile : Profile
 {
-    public CarMarkProfile()
+    public CarMarkModelProfile()
     {
         CreateMap<CarMark, CarMarkModel>()
             .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.Country.Name))
