@@ -10,7 +10,7 @@ public class AddCarGenerationRequest
 
     public int YearBegin { get; set; }
 
-    public int YearEnd { get; set; }
+    public int? YearEnd { get; set; }
 
     public int IDCarModel { get; set; }
 }
@@ -31,7 +31,6 @@ public class AddCarGenerationRequestValidator : AbstractValidator<AddCarGenerati
             ;
 
         RuleFor(x => x.YearEnd)
-            .NotEmpty().WithMessage("YearEnd is required.")
             .GreaterThanOrEqualTo(x => x.YearBegin).WithMessage(x => $"YearEnd must be greater than or equal YearBegin :{x.YearEnd}.")
             .LessThanOrEqualTo(DateTime.Now.Year).WithMessage($"YearEnd must be less than or equal {DateTime.Now.Year}.")
             ;

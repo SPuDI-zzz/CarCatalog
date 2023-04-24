@@ -22,6 +22,7 @@ public class CarGenerationModelProfile : Profile
     {
         CreateMap<CarGeneration, CarGenerationModel>()
             .ForMember(dest => dest.CarModel, opt => opt.MapFrom(src => src.CarModel.Name))
+            .ForMember(dest => dest.YearEnd, opt => opt.MapFrom(src => src.YearEnd ?? DateTime.Now.Year))
             ;
     }
 }
