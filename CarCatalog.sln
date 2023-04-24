@@ -81,7 +81,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Web", "Systems\W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Services.CarFilter", "Services\CarCatalog.Services.CarFilter\CarCatalog.Services.CarFilter.csproj", "{188EFD1D-2A3A-4756-B92E-6BA0490CD0EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarCatalog.Services.Favorite", "Services\CarCatalog.Services.Favorite\CarCatalog.Services.Favorite.csproj", "{3E232DDF-24BF-4B76-8772-A11C4D4D6257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarCatalog.Services.Favorite", "Services\CarCatalog.Services.Favorite\CarCatalog.Services.Favorite.csproj", "{3E232DDF-24BF-4B76-8772-A11C4D4D6257}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
