@@ -63,12 +63,6 @@ services:
     env_file:
       - env.worker
 
-  carcatalog.web:
-    ports:
-      - "10002:80"
-    networks:
-      - shared.carcatalog.net
-
 networks:
   shared.carcatalog.net:
     name: car_catalog_net
