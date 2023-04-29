@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\CarCatalog.Context\CarCatalog.Context.csproj" />
+    <ProjectReference Include="..\CarCatalog.Services.Cache\CarCatalog.Services.Cache.csproj" />
   </ItemGroup>
 
 </Project>

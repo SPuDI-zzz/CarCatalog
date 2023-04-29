@@ -5,12 +5,15 @@ using CarCatalog.Common.Exceptions;
 using CarCatalog.Common.Validator;
 using CarCatalog.Context;
 using CarCatalog.Context.Entities;
+using CarCatalog.Services.Cache;
 using Microsoft.EntityFrameworkCore;
 
 public class CarForSaleService : ICarForSaleService
 {
+    private const string contextCacheKey = "cars_cache_key";
     private readonly IDbContextFactory<MainDbContext> contextFactory;
     private readonly IMapper mapper;
+    private readonly ICacheService cacheService;
     private readonly IModelValidator<GetCarsForSaleModel> getCarsForSaleModelValidator;
     private readonly IModelValidator<AddCarForSaleModel> addCarForSaleModelValidator;
     private readonly IModelValidator<UpdateCarForSaleModel> updateCarForSaleModelValidator;
@@ -21,18 +24,30 @@ public class CarForSaleService : ICarForSaleService
         , IModelValidator<GetCarsForSaleModel> getCarsForSaleModelValidator
         , IModelValidator<AddCarForSaleModel> addCarForSaleModelValidator
         , IModelValidator<UpdateCarForSaleModel> updateCarForSaleModelValidator
-        )
+        , ICacheService cacheService)
     {
         this.contextFactory = contextFactory;
         this.mapper = mapper;
         this.getCarsForSaleModelValidator = getCarsForSaleModelValidator;
         this.addCarForSaleModelValidator = addCarForSaleModelValidator;
         this.updateCarForSaleModelValidator = updateCarForSaleModelValidator;
+        this.cacheService = cacheService;
     }
 
     public async Task<IEnumerable<CarForSaleModel>> GetCarsForSale(GetCarsForSaleModel model)
     {
         getCarsForSaleModelValidator.Check(model);
+
+        try
+        {
+            var cached_data = await cacheService.Get<IEnumerable<CarForSaleModel>>(contextCacheKey);
+            if (cached_data != null)
+                return cached_data;
+        }
+        catch(Exception ex)
+        {
+            throw new ProcessException(ex.Message);
+        }
 
         using var context = await contextFactory.CreateDbContextAsync();
 
@@ -50,6 +65,8 @@ public class CarForSaleService : ICarForSaleService
         var data = (await carsForSale.ToListAsync())
             .Select(mapper.Map<CarForSaleModel>)
             ;
+
+        await cacheService.Put(contextCacheKey, data, TimeSpan.FromSeconds(30));
 
         return data;
     }
@@ -79,6 +96,8 @@ public class CarForSaleService : ICarForSaleService
         await context.AddAsync(carForSale);
         context.SaveChanges();
 
+        await cacheService.Delete(contextCacheKey);
+
         return mapper.Map<CarForSaleModel>(carForSale);
     }
 
@@ -95,6 +114,8 @@ public class CarForSaleService : ICarForSaleService
 
         context.CarsForSale.Update(carForSale);
         context.SaveChanges();
+
+        await cacheService.Delete(contextCacheKey);
     }
 
     public async Task DeleteCarForSale(int carForSaleId)
@@ -106,5 +127,7 @@ public class CarForSaleService : ICarForSaleService
 
         context.Remove(carForSale);
         context.SaveChanges();
+
+        await cacheService.Delete(contextCacheKey);
     }
 }
