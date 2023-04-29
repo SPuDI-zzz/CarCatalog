@@ -32,6 +32,16 @@ public class CarGenerationsController : ControllerBase
         return response;
     }
 
+    [ProducesResponseType(typeof(IEnumerable<CarGenerationResponse>), 200)]
+    [HttpGet("/api/v{version:apiVersion}/carModels/{carModelId}/carGenerations")]
+    public async Task<IEnumerable<CarGenerationResponse>> GetCarGenerationsByCarModelId([FromRoute] int carModelId)
+    {
+        var carGenerations = await carGenerationService.GetCarGenerationsByCarModelId(carModelId);
+        var response = mapper.Map<IEnumerable<CarGenerationResponse>>(carGenerations);
+
+        return response;
+    }
+
     [ProducesResponseType(typeof(CarGenerationResponse), 200)]
     [HttpGet("{id}")]
     public async Task<CarGenerationResponse> GetCarGenerationById([FromRoute] int id)

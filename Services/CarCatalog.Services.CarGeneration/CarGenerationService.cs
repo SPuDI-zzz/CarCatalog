@@ -39,6 +39,7 @@ public class CarGenerationService : ICarGenerationService
         var carGenerations = context
             .CarGenerations
             .Include(x => x.CarModel)
+            .OrderBy(x => x.Name)
             .AsQueryable()
             ;
 
@@ -106,5 +107,24 @@ public class CarGenerationService : ICarGenerationService
 
         context.Remove(carGeneration);
         context.SaveChanges();
+    }
+
+    public async Task<IEnumerable<CarGenerationModel>> GetCarGenerationsByCarModelId(int carModelId)
+    {
+        using var context = await contextFactory.CreateDbContextAsync();
+
+        var carGenerations = context
+            .CarGenerations
+            .Include(x => x.CarModel)
+            .Where(x => x.IDCarModel.Equals(carModelId))
+            .OrderBy(x => x.Name)
+            .AsQueryable()
+            ;
+
+        var data = (await carGenerations.ToListAsync())
+            .Select(mapper.Map<CarGenerationModel>)
+            ;
+
+        return data;
     }
 }
