@@ -39,6 +39,7 @@ public class CarMarkService : ICarMarkService
         var carMarks = context
             .CarMarks
             .Include(x => x.Country)
+            .OrderBy(x => x.Name)
             .AsQueryable()
             ;
 
