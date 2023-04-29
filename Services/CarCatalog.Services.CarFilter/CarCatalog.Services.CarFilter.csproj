@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\CarCatalog.Context\CarCatalog.Context.csproj" />
+    <ProjectReference Include="..\..\Shared\CarCatalog.Consts\CarCatalog.Consts.csproj" />
   </ItemGroup>
 
 </Project>

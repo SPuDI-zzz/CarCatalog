@@ -41,24 +41,24 @@ public class CarFilterService : ICarFilterService
                        carMark, carModel, carGeneration ,carBodyType, carDriveType, carEngineType, carTransmission, carForSale
                    };
 
-        if (model.CarMarkUid != null)
+        if (model.CarMarkId != null)
         {
             cars = from car in cars
-                   where car.carMark.Uid == model.CarMarkUid
+                   where car.carMark.Id == model.CarMarkId
                    select car;
         }
 
-        if (model.CarModelUid != null)
+        if (model.CarModelId != null)
         {
             cars = from car in cars
-                   where car.carModel.Uid == model.CarModelUid
+                   where car.carModel.Id == model.CarModelId
                    select car;
         }
 
-        if (model.CarGenerationUid != null)
+        if (model.CarGenerationId != null)
         {
             cars = from car in cars
-                   where car.carGeneration.Uid == model.CarGenerationUid
+                   where car.carGeneration.Id == model.CarGenerationId
                    select car;
         }
 
@@ -97,6 +97,38 @@ public class CarFilterService : ICarFilterService
                    select car;
         }
 
+        if (model.Mileage != null)
+        {
+            cars = from car in cars
+                   where car.carForSale.Mileage >= model.Mileage
+                   select car;
+        }
+
+        switch (model.SortOrder)
+        {
+            case Consts.SortState.NameAsc:
+                cars = cars.OrderBy(x => x.carMark.Name);
+                break;
+            case Consts.SortState.NameDesc:
+                cars = cars.OrderByDescending(x => x.carMark.Name);
+                break;
+            case Consts.SortState.PriceAsc:
+                cars = cars.OrderBy(x => x.carForSale.Price);
+                break;
+            case Consts.SortState.PriceDesc:
+                cars = cars.OrderByDescending(x => x.carForSale.Price);
+                break;
+            case Consts.SortState.MiliageAsc:
+                cars = cars.OrderBy(x => x.carForSale.Mileage);
+                break;
+            case Consts.SortState.MiliageDesc:
+                cars = cars.OrderByDescending(x => x.carForSale.Mileage);
+                break;
+            default:
+                cars = cars.OrderBy(x => x.carMark.Name);
+                break;
+        }
+
         var data = (await cars.ToListAsync())
             .Select(s => new CarFilterModel 
             { 
@@ -107,7 +139,8 @@ public class CarFilterService : ICarFilterService
                 CarDriveTypeName = s.carDriveType.Name,
                 CarEngineTypeName = s.carEngineType.Name,
                 CarTransmissionName = s.carTransmission.Name,
-                CarPrice = s.carForSale.Price
+                CarPrice = s.carForSale.Price,
+                Mileage = s.carForSale.Mileage,
             })
             ;
 

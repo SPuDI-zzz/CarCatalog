@@ -13,5 +13,6 @@ public class CarFilterModel
     public string CarEngineTypeName { get; set; }
     public string CarTransmissionName { get; set; }
     public int CarPrice { get; set; }
+    public int Mileage { get; set; }
 }
 

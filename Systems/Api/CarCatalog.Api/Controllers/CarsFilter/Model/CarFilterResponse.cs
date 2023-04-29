@@ -5,7 +5,6 @@ using CarCatalog.Services.CarFilter;
 
 public class CarFilterResponse
 {
-    public Guid CarForSaleUid { get; set; }
     public string CarMarkName { get; set; }
     public string CarModelName { get; set; }
     public string CarGenerationName { get; set; }
