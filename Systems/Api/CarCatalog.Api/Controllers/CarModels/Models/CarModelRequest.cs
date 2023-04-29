@@ -1,7 +1,7 @@
 ﻿namespace CarCatalog.Api.Controllers.CarModels.Models;
 
 using AutoMapper;
-using CarCatalog.Services.CarConfiguration;
+using CarCatalog.Services.CarModel;
 using FluentValidation;
 
 public class CarModelRequest
@@ -32,6 +32,6 @@ public class CarModelRequestProfile : Profile
 {
     public CarModelRequestProfile()
     {
-        CreateMap<CarModelRequest, GetCarConfigurationsModel>();
+        CreateMap<CarModelRequest, GetCarModelsModel>();
     }
 }
