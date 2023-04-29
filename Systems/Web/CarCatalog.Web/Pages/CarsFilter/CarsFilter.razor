@@ -1,0 +1,202 @@
+﻿@page "/catalog"
+
+@inject ISnackbar Snackbar
+@inject IFilterService filterService
+
+@layout MainLayout
+
+<MudText Typo="Typo.h4" Class="ma-4">Catalog</MudText>
+
+<MudContainer Class="d-flex flex-column">
+    <MudPaper Class="flex-wrap gap-2 d-flex flex-grow-1" Width="100%">
+        <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
+            <MudSelect OnClearButtonClick="() => disabledModel = true" T="int?" @bind-Value="@model.CarMarkId" Label="Select car mark" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadCarModels()">
+    
+                @foreach (var carMark in CarMarkItems)
+                {
+                    <MudSelectItem T="int?" Value="@carMark.Id">@carMark.Name</MudSelectItem>
+                }
+            </MudSelect>
+        </MudPaper>
+        <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
+            <MudSelect OnClearButtonClick="() => disabledGeneration = true" Disabled="@disabledModel" T="int?" @bind-Value="@model.CarModelId" Label="Select car model" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadCarGenerations()">
+
+            @foreach (var carModel in CarModelItems)
+            {
+                <MudSelectItem T="int?" Value="@carModel.Id">@carModel.Name</MudSelectItem>
+            }
+        </MudSelect>
+        </MudPaper>
+        <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
+            <MudSelect Disabled="@disabledGeneration" T="int?" @bind-Value="@model.CarGenerationId" Label="Select car generation" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadFilter()">
+
+            @foreach (var carGeneration in CarGenerationItems)
+            {
+                <MudSelectItem T="int?" Value="@carGeneration.Id">@carGeneration.Name</MudSelectItem>
+            }
+        </MudSelect>
+        </MudPaper>
+        <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
+            <MudSelect T="int?" @bind-Value="@model.CarBodyTypeId" Label="Select car body type" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadFilter()">
+
+                @foreach (var bodyType in CarBodyTypeItems)
+                {
+                    <MudSelectItem T="int?" Value="@bodyType.Id">@bodyType.Name</MudSelectItem>
+                }
+            </MudSelect>
+        </MudPaper>
+        <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
+            <MudSelect T="int?" @bind-Value="@model.CarDriveTypeId" Label="Select car drive type" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadFilter()">
+
+                @foreach (var carDriveType in CarDriveTypeItems)
+                {
+                    <MudSelectItem T="int?" Value="@carDriveType.Id">@carDriveType.Name</MudSelectItem>
+                }
+            </MudSelect>
+        </MudPaper>
+        <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
+            <MudSelect T="int?" @bind-Value="@model.CarEngineTypeId" Label="Select car engine type" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadFilter()">
+
+                @foreach (var carEngineType in CarEngineTypeItems)
+                {
+                    <MudSelectItem T="int?" Value="@carEngineType.Id">@carEngineType.Name</MudSelectItem>
+                }
+            </MudSelect>
+        </MudPaper>
+        <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
+            <MudSelect T="int?" @bind-Value="@model.CarTransmissionTypeId" Label="Select car transmission" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadFilter()">
+
+                @foreach (var carTransmisson in CarTransmissonItems)
+                {
+                    <MudSelectItem T="int?" Value="@carTransmisson.Id">@carTransmisson.Name</MudSelectItem>
+                }
+            </MudSelect>
+        </MudPaper>
+        <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
+            <MudNumericField @bind-Value="model.CarPrice" Label="Price" Variant="Variant.Outlined" Min="0" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Money" AdornmentColor="Color.Success" OnBlur="() => ReloadFilter()" />
+        </MudPaper>
+        <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
+            <MudNumericField @bind-Value="model.Mileage" Label="Mileage" Variant="Variant.Outlined" Min="0" OnBlur="() => ReloadFilter()" />
+        </MudPaper>
+        <MudRadioGroup T="SortState" SelectedOptionChanged="(sortOrder) => ReloadFilter(sortOrder)">
+            <MudRadio Option="SortState.NameAsc" Color="Color.Primary" UnCheckedColor="Color.Default" >A-Z</MudRadio>
+            <MudRadio Option="SortState.NameDesc" Color="Color.Primary" UnCheckedColor="Color.Default">Z-A</MudRadio>
+            <MudRadio Option="SortState.PriceAsc" Color="Color.Primary" UnCheckedColor="Color.Default">Min-Price</MudRadio>
+            <MudRadio Option="SortState.PriceDesc" Color="Color.Primary" UnCheckedColor="Color.Default">Max-Price</MudRadio>
+            <MudRadio Option="SortState.MiliageAsc" Color="Color.Primary" UnCheckedColor="Color.Default">Min-Miliage</MudRadio>
+            <MudRadio Option="SortState.MiliageDesc" Color="Color.Primary" UnCheckedColor="Color.Default">Max-Miliage</MudRadio>
+        </MudRadioGroup>
+    </MudPaper>
+
+    <MudTable Class="mt-2" Items="@CarListItems" Dense="true" Hover="true" Filter="new Func<CarListItem,bool>(FilterFunc1)" @bind-SelectedItem="selectedItem1">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Cars</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="searchString1" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Mark</MudTh>
+            <MudTh>Model</MudTh>
+            <MudTh>Generation</MudTh>
+            <MudTh>Body type</MudTh>
+            <MudTh>Drive type</MudTh>
+            <MudTh>Engine type</MudTh>
+            <MudTh>Transmission type</MudTh>
+            <MudTh>Price</MudTh>
+            <MudTh>Miliage</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Mark">@context.CarMarkName</MudTd>
+            <MudTd DataLabel="Model">@context.CarModelName</MudTd>
+            <MudTd DataLabel="Generation">@context.CarGenerationName</MudTd>
+            <MudTd DataLabel="Body type">@context.CarBodyTypeName</MudTd>
+            <MudTd DataLabel="Drive type">@context.CarDriveTypeName</MudTd>
+            <MudTd DataLabel="Engine type">@context.CarEngineTypeName</MudTd>
+            <MudTd DataLabel="Transmission type">@context.CarTransmissionName</MudTd>
+            <MudTd DataLabel="Price">@context.CarPrice</MudTd>
+            <MudTd DataLabel="Miliage">@context.Mileage</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+</MudContainer>
+
+@code {
+    private IEnumerable<CarListItem> CarListItems = new List<CarListItem>();
+    private IEnumerable<CarMarkItem> CarMarkItems = new List<CarMarkItem>();
+    private IEnumerable<CarModelItem> CarModelItems = new List<CarModelItem>();
+    private IEnumerable<CarGenerationItem> CarGenerationItems = new List<CarGenerationItem>();
+    private IEnumerable<CarBodyTypeItem> CarBodyTypeItems = new List<CarBodyTypeItem>();
+    private IEnumerable<CarDriveTypeItem> CarDriveTypeItems = new List<CarDriveTypeItem>();
+    private IEnumerable<CarEngineTypeItem> CarEngineTypeItems = new List<CarEngineTypeItem>();
+    private IEnumerable<CarTransmissonItem> CarTransmissonItems = new List<CarTransmissonItem>();
+
+    private GetCarsFilterModel model = new GetCarsFilterModel();
+    private string searchString1 = "";
+    private CarListItem selectedItem1 = null;
+    private bool disabledModel = true;
+    private bool disabledGeneration = true;
+
+    private async Task ReloadCarModels()
+    {
+        disabledModel = false;
+        CarModelItems = await filterService.GetCarModelsByCarMarkIdList(model.CarMarkId);
+        await ReloadFilter();
+    }
+
+    private async Task ReloadCarGenerations()
+    {
+        disabledGeneration = false;
+        CarGenerationItems = await filterService.GetCarGenerationsByCarModelidList(model.CarModelId);
+        await ReloadFilter();
+    }
+
+    private async Task ReloadFilter(SortState sortOrder = SortState.NameAsc)
+    {
+        model.SortOrder = sortOrder;
+        CarListItems = await filterService.GetCarsFilter(model);
+    }
+
+    private async Task LoadData()
+    {
+        CarBodyTypeItems = await filterService.GetCarBodyTypesList();
+        CarDriveTypeItems = await filterService.GetCarDriveTypesList();
+        CarEngineTypeItems = await filterService.GetCarEgineTypesList();
+        CarTransmissonItems = await filterService.GetCarTransmissonsList();
+        await ReloadData();
+    }
+
+    private async Task ReloadData()
+    {
+        CarMarkItems = await filterService.GetCarMarksList();
+        CarListItems = await filterService.GetCarsFilter(model);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            Console.WriteLine("Get Cars from API");
+            await LoadData();
+        }
+        catch(Exception ex)
+        {
+            Snackbar.Add(ex.Message, Severity.Error);
+        }
+    }
+
+    private bool FilterFunc1(CarListItem element) => FilterFunc(element, searchString1);
+
+    private bool FilterFunc(CarListItem element, string searchString)
+    {
+        return
+            string.IsNullOrWhiteSpace(searchString)
+            ||
+            element.CarMarkName.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+            ||
+            element.CarModelName.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+            ||
+            element.CarGenerationName.Contains(searchString, StringComparison.OrdinalIgnoreCase);
+    }
+}
