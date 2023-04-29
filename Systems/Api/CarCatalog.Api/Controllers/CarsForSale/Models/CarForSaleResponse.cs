@@ -1,8 +1,6 @@
 ﻿namespace CarCatalog.Api.Controllers.CarsForSale.Models;
 
 using AutoMapper;
-using CarCatalog.Context.Entities;
-using CarCatalog.Services.CarConfiguration;
 using CarCatalog.Services.CarForSale;
 
 public class CarForSaleResponse
