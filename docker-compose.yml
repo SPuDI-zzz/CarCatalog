@@ -51,3 +51,14 @@ services:
       - carcatalog.redis
       - carcatalog.rabbitmq
       - carcatalog.api
+
+  carcatalog.web:
+    image: ${DOCKER_REGISTRY-}carcatalogweb
+    build:
+      context: .
+      dockerfile: Systems/Web/CarCatalog.Web/Dockerfile
+    depends_on:
+      - carcatalog.postgresql
+      - carcatalog.redis
+      - carcatalog.rabbitmq
+      - carcatalog.api
