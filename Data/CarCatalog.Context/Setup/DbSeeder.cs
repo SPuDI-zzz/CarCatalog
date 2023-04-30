@@ -1,5 +1,6 @@
 ﻿namespace CarCatalog.Context;
 
+using CarCatalog.Common.Exceptions;
 using CarCatalog.Common.Security;
 using CarCatalog.Context.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 public static class DbSeeder
 {
+    private static RoleManager<UserRole> RoleManager(IServiceProvider serviceProvider) => ServiceScope(serviceProvider).ServiceProvider.GetRequiredService<RoleManager<UserRole>>();
     private static IServiceScope ServiceScope(IServiceProvider serviceProvider) => serviceProvider.GetService<IServiceScopeFactory>()!.CreateScope();
     private static MainDbContext DbContext(IServiceProvider serviceProvider) => ServiceScope(serviceProvider).ServiceProvider.GetRequiredService<IDbContextFactory<MainDbContext>>().CreateDbContext();
 
@@ -43,29 +45,36 @@ public static class DbSeeder
 
     private static async Task AddUserRoles(IServiceProvider serviceProvider)
     {
-        await using var context = DbContext(serviceProvider);
+        var roleManager = RoleManager(serviceProvider);
 
-        if (context.UserRoles.Any())
+        if (roleManager.Roles.Any())
         {
             return;
         }
 
-        context.UserRoles.Add(new Entities.UserRole
+        var result = await roleManager.CreateAsync(new UserRole()
         {
             Name = AppRoles.Admin,
         });
 
-        context.UserRoles.Add(new Entities.UserRole
+        if (!result.Succeeded)
+            throw new ProcessException($"Creating user account is wrong. {String.Join(", ", result.Errors.Select(s => s.Description))}");
+
+        result = await roleManager.CreateAsync(new UserRole()
         {
             Name = AppRoles.User,
         });
 
-        context.UserRoles.Add(new Entities.UserRole
+        if (!result.Succeeded)
+            throw new ProcessException($"Creating user account is wrong. {String.Join(", ", result.Errors.Select(s => s.Description))}");
+
+        result = await roleManager.CreateAsync(new UserRole()
         {
             Name = AppRoles.Seller,
         });
 
-        context.SaveChanges();
+        if (!result.Succeeded)
+            throw new ProcessException($"Creating user account is wrong. {String.Join(", ", result.Errors.Select(s => s.Description))}");
     }
 
     private static async Task AddCarConfigurations(IServiceProvider serviceProvider)
