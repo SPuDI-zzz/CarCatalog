@@ -18,6 +18,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\CarCatalog.Context.Entities\CarCatalog.Context.Entities.csproj" />
     <ProjectReference Include="..\..\Shared\CarCatalog.Common\CarCatalog.Common.csproj" />
+    <ProjectReference Include="..\CarCatalog.Services.Actions\CarCatalog.Services.Actions.csproj" />
+    <ProjectReference Include="..\CarCatalog.Services.EmailSender\CarCatalog.Services.EmailSender.csproj" />
   </ItemGroup>
 
 </Project>

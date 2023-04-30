@@ -4,8 +4,8 @@ using AutoMapper;
 using CarCatalog.Common.Exceptions;
 using CarCatalog.Common.Validator;
 using CarCatalog.Context.Entities;
-//using CarCatalog.Services.Actions;
-//using CarCatalog.Services.EmailSender;
+using CarCatalog.Services.Actions;
+using CarCatalog.Services.EmailSender;
 using Microsoft.AspNetCore.Identity;
 
 public class UserAccountService : IUserAccountService
@@ -13,19 +13,19 @@ public class UserAccountService : IUserAccountService
     private readonly IMapper mapper;
     private readonly UserManager<User> userManager;
     // TODO : add action to send message on email
-    //private readonly IAction action;
+    private readonly IAction action;
     private readonly IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator;
 
     public UserAccountService(
         IMapper mapper,
         UserManager<User> userManager,
-        //IAction action,
+        IAction action,
         IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator
         )
     {
         this.mapper = mapper;
         this.userManager = userManager;
-        //this.action = action;
+        this.action = action;
         this.registerUserAccountModelValidator = registerUserAccountModelValidator;
     }
 
@@ -53,12 +53,12 @@ public class UserAccountService : IUserAccountService
         if (!result.Succeeded)
             throw new ProcessException($"Creating user account is wrong. {String.Join(", ", result.Errors.Select(s => s.Description))}");
 
-        /*await action.SendEmail(new EmailModel
+        await action.SendEmail(new EmailModel
         {
             Email = model.Email,
             Subject = "CarCatalog notification",
             Message = "You are registered"
-        });*/
+        });
 
         return mapper.Map<UserAccountModel>(user);
     }
