@@ -1,8 +1,5 @@
 ﻿namespace CarCatalog.Services.CarFilter;
 
-using CarCatalog.Context.Entities;
-using AutoMapper;
-
 public class CarFilterModel
 {
     public string CarMarkName { get; set; }
@@ -15,4 +12,3 @@ public class CarFilterModel
     public int CarPrice { get; set; }
     public int Mileage { get; set; }
 }
-

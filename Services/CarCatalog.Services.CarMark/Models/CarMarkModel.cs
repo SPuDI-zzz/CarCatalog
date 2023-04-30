@@ -3,7 +3,6 @@
 using AutoMapper;
 using CarCatalog.Context.Entities;
 
-
 public class CarMarkModel
 {
     public int Id { get; set; }

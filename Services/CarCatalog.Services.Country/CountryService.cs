@@ -4,7 +4,6 @@ using AutoMapper;
 using CarCatalog.Context;
 using Microsoft.EntityFrameworkCore;
 
-
 public class CountryService : ICountryService
 {
     private readonly IDbContextFactory<MainDbContext> contextFactory;

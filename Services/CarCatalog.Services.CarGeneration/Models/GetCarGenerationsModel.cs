@@ -26,4 +26,3 @@ public class GetCarGenerationsModelValidator : AbstractValidator<GetCarGeneratio
             ;
     }
 }
-

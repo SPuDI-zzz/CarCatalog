@@ -1,8 +1,6 @@
-﻿using System.Reflection;
-using System.Text;
-using System.Text.Json;
+﻿namespace CarCatalog.Web.Pages.CarsFilter;
 
-namespace CarCatalog.Web.Pages.CarsFilter;
+using System.Text.Json;
 
 public class FilterService : IFilterService
 {

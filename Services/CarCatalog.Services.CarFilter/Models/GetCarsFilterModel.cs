@@ -1,6 +1,6 @@
-﻿using CarCatalog.Consts;
+﻿namespace CarCatalog.Services.CarFilter;
 
-namespace CarCatalog.Services.CarFilter;
+using CarCatalog.Consts;
 
 public class GetCarsFilterModel
 {

@@ -4,7 +4,6 @@ using CarCatalog.Context.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 
 public class MainDbContext : IdentityDbContext<User, UserRole, int>
 {

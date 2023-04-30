@@ -12,4 +12,3 @@ public class CarDriveType
 
     public virtual ICollection<CarConfiguration> CarConfigurations { get; set; }
 }
-

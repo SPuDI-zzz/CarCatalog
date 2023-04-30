@@ -6,7 +6,6 @@ public class GetCarsForSaleModel
 {
     public int Offset { get; set; }
     public int Limit { get; set; } = 10;
-
 }
 
 public class GetCarsForSaleModelValidator : AbstractValidator<GetCarsForSaleModel>
@@ -26,4 +25,3 @@ public class GetCarsForSaleModelValidator : AbstractValidator<GetCarsForSaleMode
             ;
     }
 }
-

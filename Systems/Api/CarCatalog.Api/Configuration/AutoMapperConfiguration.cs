@@ -1,6 +1,6 @@
-﻿using CarCatalog.Common.Helpers;
+﻿namespace CarCatalog.Api.Configuration;
 
-namespace CarCatalog.Api.Configuration;
+using CarCatalog.Common.Helpers;
 
 /// <summary>
 /// AutoMapper configuration

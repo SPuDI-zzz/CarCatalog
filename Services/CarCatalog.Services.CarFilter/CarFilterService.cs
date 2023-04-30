@@ -3,7 +3,6 @@
 using CarCatalog.Context;
 using Microsoft.EntityFrameworkCore;
 
-
 public class CarFilterService : ICarFilterService
 {
     private readonly IDbContextFactory<MainDbContext> contextFactory;

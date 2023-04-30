@@ -1,9 +1,9 @@
+namespace CarCatalog.Api.Configuration;
+
 using CarCatalog.Common.Exceptions;
 using CarCatalog.Common.Extensions;
 using CarCatalog.Common.Responses;
 using System.Text.Json;
-
-namespace CarCatalog.Api.Configuration;
 
 public class ExceptionsMiddleware
 {

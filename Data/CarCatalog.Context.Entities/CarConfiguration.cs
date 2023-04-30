@@ -27,4 +27,3 @@ public class CarConfiguration : BaseEntity
 
     public virtual ICollection<CarForSale> CarForSales { get; set; }
 }
-
