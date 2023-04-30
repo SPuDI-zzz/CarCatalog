@@ -10,7 +10,9 @@
 <MudContainer Class="d-flex flex-column">
     <MudPaper Class="flex-wrap gap-2 d-flex flex-grow-1" Width="100%">
         <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
-            <MudSelect OnClearButtonClick="() => disabledModel = true" T="int?" @bind-Value="@model.CarMarkId" Label="Select car mark" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadCarModels()">
+            <MudSelect OnClearButtonClick="() => {
+                disabledModel = true; disabledGeneration = true; model.CarModelId = null; model.CarGenerationId = null;
+            }" T="int?" @bind-Value="@model.CarMarkId" Label="Select car mark" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadCarModels()">
     
                 @foreach (var carMark in CarMarkItems)
                 {
@@ -19,7 +21,7 @@
             </MudSelect>
         </MudPaper>
         <MudPaper Class="flex-1" MinWidth="250px" MaxWidth="400px">
-            <MudSelect OnClearButtonClick="() => disabledGeneration = true" Disabled="@disabledModel" T="int?" @bind-Value="@model.CarModelId" Label="Select car model" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadCarGenerations()">
+            <MudSelect OnClearButtonClick="() => {disabledGeneration = true; model.CarGenerationId = null;}" Disabled="@disabledModel" T="int?" @bind-Value="@model.CarModelId" Label="Select car model" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable SelectedValuesChanged="() => ReloadCarGenerations()">
 
             @foreach (var carModel in CarModelItems)
             {
