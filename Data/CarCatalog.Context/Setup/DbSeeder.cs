@@ -549,7 +549,6 @@ public static class DbSeeder
     {
         await using var context = DbContext(serviceProvider);
 
-        // TODO : add database filling
         if (context.Countries.Any())
         {
             return;

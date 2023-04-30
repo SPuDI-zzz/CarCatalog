@@ -11,7 +11,6 @@ public static class CorsConfiguration
     /// <param name="services">Services collection</param>
     public static IServiceCollection AddAppCors(this IServiceCollection services)
     {
-        // TODO: Configure access rights.
         services.AddCors(builder =>
         {
             builder.AddDefaultPolicy(pol =>

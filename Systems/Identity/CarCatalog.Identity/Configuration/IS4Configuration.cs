@@ -31,9 +31,6 @@ public static class IS4Configuration
             .AddInMemoryClients(AppClients.Clients)
             .AddInMemoryApiResources(AppResources.Resources)
             .AddInMemoryIdentityResources(AppIdentityResources.Resources)
-            // TODO : Remove test users
-            //.AddTestUsers(AppApiTestUsers.ApiUsers)
-
             .AddDeveloperSigningCredential();
 
         return services;

@@ -27,8 +27,6 @@ public static class DbContextOptionsFactory
                 );            
 
             bldr.EnableSensitiveDataLogging();
-            // TODO : add lazy loading
-            //bldr.UseLazyLoadingProxies();
             bldr.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         };
     }

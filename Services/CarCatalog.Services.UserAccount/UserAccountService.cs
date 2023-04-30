@@ -12,7 +12,6 @@ public class UserAccountService : IUserAccountService
 {
     private readonly IMapper mapper;
     private readonly UserManager<User> userManager;
-    // TODO : add action to send message on email
     private readonly IAction action;
     private readonly IModelValidator<RegisterUserAccountModel> registerUserAccountModelValidator;
 
@@ -33,18 +32,16 @@ public class UserAccountService : IUserAccountService
     {
         registerUserAccountModelValidator.Check(model);
 
-        // Find user by email
         var user = await userManager.FindByEmailAsync(model.Email);
         if (user != null)
             throw new ProcessException($"User account with email {model.Email} already exist.");
 
-        // Create user account
         user = new User()
         {
             UserName = model.UserName,
             Birthday = DateTime.UtcNow,
             Email = model.Email,
-            EmailConfirmed = true, // TODO : Сделать подтверждение почты по ссылке в письме
+            EmailConfirmed = true,
             PhoneNumber = null,
             PhoneNumberConfirmed = false
         };

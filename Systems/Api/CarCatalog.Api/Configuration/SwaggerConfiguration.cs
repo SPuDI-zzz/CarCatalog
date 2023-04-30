@@ -16,12 +16,11 @@ public static class SwaggerConfiguration
 {
     private static string AppTitle = "CarCatalog Api";
 
-    // TODO : add IdentitySettings
     /// <summary>
     /// Add OpenAPI for API
     /// </summary>
     /// <param name="services">Services collection</param>
-    /// <param name="mainSettings"></param>
+    /// <param name="identitySettings"></param>
     /// <param name="swaggerSettings"></param>
     public static IServiceCollection AddAppSwagger(this IServiceCollection services, IdentitySettings identitySettings, SwaggerSettings swaggerSettings)
     {
@@ -136,9 +135,6 @@ public static class SwaggerConfiguration
                 options.DocExpansion(DocExpansion.List);
                 options.DefaultModelsExpandDepth(-1);
                 options.OAuthAppName(AppTitle);
-
-                //options.OAuthClientId(swaggerSettings?.OAuthClientId ?? "");
-                //options.OAuthClientSecret(swaggerSettings?.OAuthClientSecret ?? "");
             }
         );
     }

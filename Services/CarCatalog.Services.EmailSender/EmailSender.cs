@@ -12,7 +12,6 @@ public class EmailSender : IEmailSender
     }
     public async Task Send(EmailModel model)
     {
-        // TODO : add send email
         await Task.Delay(1000);
 
         logger.LogDebug($"Email sended: {model.Email} {model.Subject} {model.Message}");
