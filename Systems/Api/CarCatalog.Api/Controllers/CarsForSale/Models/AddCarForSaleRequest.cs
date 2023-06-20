@@ -25,13 +25,11 @@ public class AddCarForSaleRequestValidator : AbstractValidator<AddCarForSaleRequ
             ;
 
         RuleFor(x => x.Price)
-            .NotEmpty().WithMessage("Price is required.")
             .GreaterThan(0).WithMessage("Price must be greater than 0.")
             ;
 
-        RuleFor(x => x.Price)
-            .NotEmpty().WithMessage("Price is required.")
-            .GreaterThanOrEqualTo(0).WithMessage("Price must be greater than or equal 0.")
+        RuleFor(x => x.Mileage)
+            .GreaterThanOrEqualTo(0).WithMessage("Mileage must be greater than or equal 0.")
             ;
 
         RuleFor(x => x.IdCarConfiguration)

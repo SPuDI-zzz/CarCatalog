@@ -12,6 +12,8 @@ public class UpdateCarForSaleRequest
 
     public int Mileage { get; set; }
 
+    public bool IsSold { get; set; }
+
     public int IdCarConfiguration { get; set; }
 }
 
@@ -25,13 +27,11 @@ public class UpdateCarForSaleRequestValidator : AbstractValidator<UpdateCarForSa
             ;
 
         RuleFor(x => x.Price)
-            .NotEmpty().WithMessage("Price is required.")
             .GreaterThan(0).WithMessage("Price must be greater than 0.")
             ;
 
-        RuleFor(x => x.Price)
-            .NotEmpty().WithMessage("Price is required.")
-            .GreaterThanOrEqualTo(0).WithMessage("Price must be greater than or equal 0.")
+        RuleFor(x => x.Mileage)
+            .GreaterThanOrEqualTo(0).WithMessage("Mileage must be greater than or equal 0.")
             ;
 
         RuleFor(x => x.IdCarConfiguration)
