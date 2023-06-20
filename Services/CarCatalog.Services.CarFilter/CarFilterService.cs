@@ -35,6 +35,7 @@ public class CarFilterService : ICarFilterService
                    on carConfiguration.IdCarTransmission equals carTransmission.Id
                    join carForSale in context.CarsForSale
                    on carConfiguration.Id equals carForSale.IdCarConfiguration
+                   where carForSale.IsSold == false
                    select new
                    {
                        carMark, carModel, carGeneration ,carBodyType, carDriveType, carEngineType, carTransmission, carForSale
