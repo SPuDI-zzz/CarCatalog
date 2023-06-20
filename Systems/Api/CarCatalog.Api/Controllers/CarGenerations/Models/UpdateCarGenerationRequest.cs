@@ -25,7 +25,6 @@ public class UpdateCarGenerationRequestValidator : AbstractValidator<UpdateCarGe
             ;
 
         RuleFor(x => x.YearBegin)
-            .NotEmpty().WithMessage("YearBegin is required.")
             .GreaterThanOrEqualTo(1900).WithMessage("YearBegin must be greater than or equal 1900.")
             .LessThanOrEqualTo(DateTime.Now.Year).WithMessage($"YearBegin must be less than or equal {DateTime.Now.Year}.")
             ;

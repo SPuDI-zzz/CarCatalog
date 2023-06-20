@@ -30,22 +30,15 @@ public class UpdateCarConfigurationRequestValidator : AbstractValidator<UpdateCa
     public UpdateCarConfigurationRequestValidator()
     {
         RuleFor(x => x.Trunk)
-            .NotEmpty().WithMessage("Trunk is required.")
             .GreaterThan(0).WithMessage("Trunk must be greater than 0.")
             ;
 
         RuleFor(x => x.HorsePower)
-            .NotEmpty().WithMessage("HorsePower is required.")
             .GreaterThan(0).WithMessage("HorsePower must be greater than 0.")
             ;
 
         RuleFor(x => x.EngineCapasity)
-            .NotEmpty().WithMessage("EngineCapasity is required.")
             .GreaterThan(0).WithMessage("EngineCapasity must be greater than 0.")
-            ;
-
-        RuleFor(x => x.LeftHandWheel)
-            .NotEmpty().WithMessage("Trunk is required.")
             ;
 
         RuleFor(x => x.IdCarDriveType)
