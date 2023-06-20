@@ -1,14 +1,14 @@
 ﻿namespace CarCatalog.Context.Entities;
 
-using System.Data.SqlTypes;
-
 public class CarForSale : BaseEntity
 {
     public string Color { get; set; }
-    
+
     public int Price { get; set; }
 
     public int Mileage { get; set; }
+
+    public bool IsSold { get; set; }
 
     public int? IdCarConfiguration { get; set; }
     public virtual CarConfiguration CarConfiguration { get; set; }
