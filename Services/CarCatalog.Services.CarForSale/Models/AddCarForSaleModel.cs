@@ -25,13 +25,11 @@ public class AddCarForSaleModelValidator : AbstractValidator<AddCarForSaleModel>
             ;
 
         RuleFor(x => x.Price)
-            .NotEmpty().WithMessage("Price is required.")
-            .GreaterThanOrEqualTo(0).WithMessage("Price must be greater than or equal 0.")
+            .GreaterThan(0).WithMessage("Price must be greater than 0.")
             ;
 
         RuleFor(x => x.Mileage)
-            .NotEmpty().WithMessage("Mileage is required.")
-            .GreaterThan(0).WithMessage("Mileage must be greater than 0.")
+            .GreaterThanOrEqualTo(0).WithMessage("Mileage must be greater than or equal 0.")
             ;
 
         RuleFor(x => x.IdCarConfiguration)
@@ -44,6 +42,7 @@ public class AddCarForSaleModelProfile : Profile
 {
     public AddCarForSaleModelProfile()
     {
-        CreateMap<AddCarForSaleModel, CarForSale>();
+        CreateMap<AddCarForSaleModel, CarForSale>()
+            .ForMember(dest => dest.IsSold, opt => opt.MapFrom(src => false));
     }
 }

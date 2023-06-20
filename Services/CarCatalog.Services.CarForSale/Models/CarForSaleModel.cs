@@ -12,6 +12,8 @@ public class CarForSaleModel
 
     public int Mileage { get; set; }
 
+    public bool IsSold { get; set; }
+
     public int IdCarConfiguration { get; set; }
 }
 
