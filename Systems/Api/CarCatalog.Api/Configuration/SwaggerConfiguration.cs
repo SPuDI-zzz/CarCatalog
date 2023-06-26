@@ -127,12 +127,12 @@ public static class SwaggerConfiguration
         app.UseSwaggerUI(
             options =>
             {
-                options.RoutePrefix = "api";
+                options.RoutePrefix = "swagger";
                 provider.ApiVersionDescriptions.ToList().ForEach(
                     description => options.SwaggerEndpoint($"/api/{description.GroupName}/api.yaml", description.GroupName.ToUpperInvariant())
                 );
 
-                options.DocExpansion(DocExpansion.List);
+                options.DocExpansion(DocExpansion.None);
                 options.DefaultModelsExpandDepth(-1);
                 options.OAuthAppName(AppTitle);
             }
